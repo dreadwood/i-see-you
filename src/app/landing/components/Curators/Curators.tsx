@@ -113,8 +113,9 @@ export default function Curators(): JSX.Element {
           src={illustration}
           alt={''}
           width={876}
-          height={516}
+          height={425}
           quality={80}
+          sizes="880px"
           placeholder="blur"
         />
       </div>

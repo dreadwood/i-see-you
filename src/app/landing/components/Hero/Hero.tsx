@@ -42,6 +42,8 @@ export default function Hero(): JSX.Element {
             width={639}
             height={639}
             quality={80}
+            sizes="640px"
+            priority={true}
             placeholder="blur"
           />
         </div>

@@ -18,6 +18,7 @@ export default function Registration(): JSX.Element {
             width={728}
             height={645}
             quality={80}
+            sizes="730px"
             placeholder="blur"
           />
         </div>

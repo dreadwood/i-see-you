@@ -22,6 +22,7 @@ export default function WhyNeed(): JSX.Element {
             alt={'Юрий Менячихин'}
             width={572}
             height={488}
+            sizes="580px"
             quality={80}
             placeholder="blur"
           />

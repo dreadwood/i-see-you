@@ -75,9 +75,10 @@ export default function Feedback(): JSX.Element {
           <Image
             src={illustration}
             alt={''}
-            width={821}
-            height={593}
+            width={820}
+            height={580}
             quality={80}
+            sizes="820px"
             placeholder="blur"
           />
         </div>
@@ -96,9 +97,6 @@ export default function Feedback(): JSX.Element {
                 </div>
               ))}
             </div>
-            {/* <Slide img={photoStudent1} alt="студент 01" />
-          <Slide img={photoStudent2} alt="студент 02" />
-          <Slide img={photoStudent3} alt="студент 03" /> */}
           </div>
 
           <div className={styles.bottom}>

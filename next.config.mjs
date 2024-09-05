@@ -5,6 +5,9 @@ import SVGSpritemapPlugin from 'svg-spritemap-webpack-plugin'
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
+  images: {
+    formats: ['image/avif', 'image/webp']
+  },
   webpack(config) {
     const SVGSpritemap = new SVGSpritemapPlugin('src/assets/sprites/**/*.svg', {
       output: {

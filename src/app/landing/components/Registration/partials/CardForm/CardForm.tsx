@@ -117,6 +117,7 @@ export default function CardForm({ className }: CardFormProps): JSX.Element {
           onChange={(evt) => setTelegram(evt.target.value)}
         />
         <Button
+          className={styles.btn}
           text="Зарегистрироваться"
           type="submit"
           onCLick={handleFormSubmit}

@@ -7,7 +7,8 @@ html,
 body {
   height: 100%;
   max-width: 100vw;
-  overflow-x: hidden;
+
+  // overflow: hidden scroll;
   scroll-behavior: smooth;
 }
 body {
@@ -16,6 +17,7 @@ body {
   min-height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
   font-family: var(--font-text);
   font-size: 16px;
   line-height: 26px;

@@ -1,6 +1,6 @@
+import clsx from 'clsx'
 import Icon from '@/components/Icon/Icon'
 import styles from './PlayButton.module.scss'
-import clsx from 'clsx'
 
 interface PlayButtonProps {
   className?: string

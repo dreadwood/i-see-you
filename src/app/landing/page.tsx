@@ -10,6 +10,7 @@ import Hero from './components/Hero/Hero'
 import Header from './components/Header/Header'
 import Curators from './components/Curators/Curators'
 import Program from './components/Program/Program'
+import ScrollTopButton from './UI/ScrollTopButton/ScrollTopButton'
 
 export default function Landing(): JSX.Element {
   return (
@@ -25,6 +26,7 @@ export default function Landing(): JSX.Element {
         <Feedback />
         <AboutCourse />
         <Registration />
+        <ScrollTopButton />
       </main>
       <Footer />
     </>

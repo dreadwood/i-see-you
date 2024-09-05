@@ -2,6 +2,8 @@
 .section {
   position: relative;
   margin-top: 120px;
+
+  // overflow-x: hidden;
   @include var.breakpoint-md {
     margin-top: 235px;
   }

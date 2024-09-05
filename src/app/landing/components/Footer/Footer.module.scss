@@ -1,0 +1,76 @@
+@use "~var" as var;
+.footer {
+  font-family: var(--font-text);
+  color: var(--color-white);
+  letter-spacing: -0.02em;
+  background-color: var(--color-bg-additional-2);
+  border-top: 1px solid var(--color-border-2);
+}
+.wrp {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  gap: 20px;
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 40px calc(var(--paddings) + 32px);
+  @include var.breakpoint-xl {
+    padding: 40px var(--paddings);
+  }
+  @include var.breakpoint-md {
+    grid-template-columns: auto;
+    gap: 40px;
+  }
+}
+.text {
+  letter-spacing: -0.02em;
+}
+.contactList {
+  @include var.list-reset;
+  display: grid;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 32px;
+}
+.contactItem {
+  @include var.transition(color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  svg {
+    display: block;
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    fill: currentcolor;
+  }
+  &:hover,
+  &:focus-visible {
+    color: var(--color-accent-additional);
+  }
+}
+.rightCol {
+  display: grid;
+  align-content: end;
+  gap: 8px;
+}
+.link {
+  @include var.transition(color);
+  display: block;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  letter-spacing: -0.02em;
+  text-decoration: underline;
+  background-color: transparent;
+  border: 0;
+  &:hover,
+  &:focus-visible {
+    color: var(--color-accent-additional);
+  }
+}
+.copyright {
+  font-size: 14px;
+  line-height: 24px;
+}

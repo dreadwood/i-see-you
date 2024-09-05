@@ -1,0 +1,29 @@
+@use "~var" as var;
+.header {
+  border-bottom: 1px solid var(--color-border-3);
+}
+.wrp {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 24px var(--paddings);
+}
+.list {
+  @include var.list-reset;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.link {
+  @include var.transition(color);
+  @include var.text-nowrap;
+  font-family: var(--font-title);
+  font-size: 18px;
+  line-height: 32px;
+  font-weight: 400;
+  text-align: left;
+  color: var(--color-text-additional-2);
+  &:hover,
+  &:focus-visible {
+    color: var(--color-accent-additional);
+  }
+}

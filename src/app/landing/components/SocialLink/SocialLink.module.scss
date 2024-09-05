@@ -1,0 +1,38 @@
+@use "~var" as var;
+.list {
+  @include var.list-reset;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.link {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  svg {
+    @include var.transition(opacity);
+    display: block;
+    width: 100%;
+    height: 100%;
+    &:first-child {
+      position: relative;
+      z-index: 1;
+      opacity: 1;
+    }
+    &:last-child {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+  &:hover,
+  &:focus-visible {
+    svg {
+      &:first-child {
+        opacity: 0;
+      }
+    }
+  }
+}

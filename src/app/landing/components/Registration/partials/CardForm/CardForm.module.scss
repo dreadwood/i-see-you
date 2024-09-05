@@ -1,0 +1,145 @@
+@use "~var" as var;
+.card {
+  padding: 32px;
+  color: var(--color-white);
+  background-color: var(--color-bg-additional-2);
+  border-radius: 16px;
+}
+.title {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 400;
+  @include var.breakpoint-xs {
+    font-size: 40px;
+    line-height: 48px;
+  }
+}
+.text {
+  margin: 0;
+  margin-top: 24px;
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+}
+.notice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 15px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: var(--color-text-notice);
+  background-color: var(--color-bg-notice);
+  border: 1px solid var(--color-border-notice);
+  border-radius: 12px;
+  @include var.breakpoint-xs {
+    padding: 12px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+.noticeIcon {
+  display: block;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  fill: currentcolor;
+}
+.noticeClose {
+  @include var.transition(color);
+  flex-shrink: 0;
+  margin: 0;
+  margin-left: auto;
+  padding: 0;
+  color: inherit;
+  background-color: transparent;
+  border: 0;
+  svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    fill: currentcolor;
+  }
+  &:hover,
+  &:focus-visible {
+    color: var(--color-text-additional);
+  }
+}
+.form {
+  display: grid;
+  gap: 40px;
+  margin-top: 40px;
+}
+.field {
+  @include var.transition(border-color);
+  display: block;
+  width: 100%;
+  padding: 11px 19px;
+  font-family: var(--font-text);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+  text-align: left;
+  color: var(--color-text-additional);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  outline: none;
+  appearance: none;
+  &[disabled] {
+    cursor: not-allowed;
+  }
+  &::placeholder {
+    color: var(--color-border);
+  }
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  // webkit
+  &[type="number"]::-webkit-outer-spin-button,
+  &[type="number"]::-webkit-inner-spin-button {
+    margin: 0;
+    appearance: none;
+  }
+
+  // firefox
+  &[type="number"] {
+    appearance: textfield;
+  }
+
+  // for hidden key icon in safari
+  &::-webkit-credentials-auto-fill-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+}
+.btn {
+  @include var.transition(background-color);
+  display: block;
+  justify-self: end;
+  width: max-content;
+  margin: 0;
+  padding: 12px 16px;
+  font-family: var(--font-text);
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 400;
+  text-align: center;
+  color: var(--color-white);
+  background-color: var(--color-accent-additional);
+  border: 0;
+  border-radius: 8px;
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-accent-hover);
+  }
+}

@@ -1,0 +1,54 @@
+@use "~var" as var;
+
+// .slide {}
+.photo {
+  position: relative;
+  height: 345px;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: var(--box-shadow);
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+.like {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  color: var(--color-accent-additional);
+  background-color: rgb(29 29 29 / 40%);
+  border: 0;
+  border-radius: 50%;
+  backdrop-filter: blur(20px);
+  svg {
+    @include var.transition(fill, stroke);
+    width: 22px;
+    height: 22px;
+    fill: transparent;
+    stroke: var(--color-white);
+  }
+  &:not(.actv):hover svg,
+  &:not(.actv):focus-visible svg {
+    stroke: var(--color-like);
+  }
+  &.actv svg {
+    fill: var(--color-like);
+    stroke: var(--color-like);
+  }
+}
+.text {
+  margin-top: 32px;
+  font-size: 20px;
+  line-height: 32px;
+  text-align: center;
+  letter-spacing: -0.02em;
+}

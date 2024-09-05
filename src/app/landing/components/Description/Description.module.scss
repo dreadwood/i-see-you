@@ -1,0 +1,51 @@
+@use "~var" as var;
+.section {
+  margin-top: 96px;
+  @include var.breakpoint-md {
+    margin-top: 64px;
+  }
+}
+.wrp {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--paddings);
+}
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+  margin-top: 24px;
+  @include var.breakpoint-xl {
+    grid-template-columns: auto;
+  }
+}
+.conten {
+  flex-shrink: 0;
+  p {
+    margin: 0;
+    &:not(:first-child) {
+      margin-top: 26px;
+    }
+  }
+}
+.accent {
+  margin-top: 24px;
+  padding: 16px 32px 16px 28px;
+  font-weight: 700;
+  border-left: 4px solid var(--color-accent-additional);
+}
+.video {
+  position: relative;
+  height: 386px;
+  overflow: hidden;
+  background: var(--color-bg-additional-2);
+  border-radius: 16px;
+  box-shadow: var(--box-shadow);
+  img {
+    position: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}

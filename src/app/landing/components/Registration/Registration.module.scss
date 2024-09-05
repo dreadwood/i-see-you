@@ -1,0 +1,92 @@
+@use "~var" as var;
+
+@mixin breakpoint-grid {
+  @media (width <= 900px) {
+    @content;
+  }
+}
+.section {
+  position: relative;
+  margin-top: 120px;
+  @include var.breakpoint-md {
+    margin-top: 100px;
+  }
+}
+.wrp {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 40px;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--paddings) 96px var(--paddings);
+  @include breakpoint-grid {
+    grid-template-columns: auto;
+    gap: 300px;
+    padding-bottom: 64px;
+  }
+}
+.cardForm {
+  @include breakpoint-grid {
+    order: 1;
+  }
+}
+.illustration {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  width: 728px;
+  height: 645px;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+      to right,
+      transparent 60%,
+      var(--color-white) 95%,
+      var(--color-white)
+    );
+  }
+  @include var.breakpoint-xxl {
+    &::before {
+      content: none;
+    }
+  }
+  @include var.breakpoint-xxl {
+    right: -145px;
+    width: 724px;
+    height: 522px;
+  }
+  @include var.breakpoint-lg {
+    right: -183px;
+    width: 630px;
+    height: 558px;
+  }
+  @include breakpoint-grid {
+    right: 0;
+    bottom: 724px;
+    width: 544px;
+    height: 482px;
+  }
+  @include var.breakpoint-sm {
+    bottom: 780px;
+    width: 100%;
+    height: auto;
+  }
+  @include var.breakpoint-xs {
+    bottom: 760px;
+  }
+}

@@ -1,0 +1,82 @@
+@mixin list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin hide-scroll {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin transition($args...) {
+  transition-timing-function: ease-out;
+  transition-duration: 0.2s;
+  transition-property: $args;
+}
+
+@mixin word-break {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin text-nowrap {
+  white-space: nowrap;
+}
+
+$breakpoint-xxl: 1440px;
+$breakpoint-xl: 1200px;
+$breakpoint-lg: 1024px;
+$breakpoint-md: 768px;
+$breakpoint-sm: 600px;
+$breakpoint-xs: 420px;
+
+// desktop - 1440px
+@mixin breakpoint-xxl {
+  @media (max-width: $breakpoint-xxl - 1px) {
+    @content;
+  }
+}
+
+// desktop-small - 1200px;
+@mixin breakpoint-xl {
+  @media (max-width: $breakpoint-xl - 1px) {
+    @content;
+  }
+}
+
+// tablet - 1024px;
+@mixin breakpoint-lg {
+  @media (max-width: $breakpoint-lg - 1px) {
+    @content;
+  }
+}
+
+// mobile-big - 768px;
+@mixin breakpoint-md {
+  @media (max-width: $breakpoint-md - 1px) {
+    @content;
+  }
+}
+
+// mobile - 600px;
+@mixin breakpoint-sm {
+  @media (max-width: $breakpoint-sm - 1px) {
+    @content;
+  }
+}
+
+// mobile-small - 420px;
+@mixin breakpoint-xs {
+  @media (max-width: $breakpoint-xs - 1px) {
+    @content;
+  }
+}

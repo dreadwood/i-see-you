@@ -1,0 +1,68 @@
+@use "~var" as var;
+.section {
+  margin-top: 120px;
+  @include var.breakpoint-md {
+    margin-top: 40px;
+  }
+}
+.wrp {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--paddings);
+}
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  @include var.breakpoint-xl {
+    display: grid;
+  }
+}
+.groupList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  @include var.breakpoint-md {
+    & > *:not(:nth-child(3n + 1)) {
+      width: calc(50% - 16px);
+    }
+    & > *:nth-child(3n + 1) {
+      width: 100%;
+    }
+  }
+  @include var.breakpoint-sm {
+    & > *:not(:nth-child(3n + 1)) {
+      width: 100%;
+    }
+  }
+}
+.groupItem {
+  flex-shrink: 0;
+  width: max-content;
+  padding: 7px 23px;
+  color: var(--color-text-additional);
+  letter-spacing: -0.02em;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  &.actv {
+    box-shadow: 0 0 0 1px var(--color-border) inset;
+  }
+  @include var.breakpoint-md {
+    text-align: center;
+  }
+}
+.groupName {
+  font-weight: 700;
+  color: var(--color-accent-additional);
+}
+.groupPeriod {
+  font-weight: 700;
+}
+.accordionList {
+  display: grid;
+  gap: 28px;
+  margin-top: 40px;
+}

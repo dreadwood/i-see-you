@@ -1,0 +1,22 @@
+@use "~var" as var;
+.btn {
+  @include var.transition(background-color);
+  display: block;
+  justify-self: end;
+  width: max-content;
+  margin: 0;
+  padding: 12px 16px;
+  font-family: var(--font-text);
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 400;
+  text-align: center;
+  color: var(--color-white);
+  background-color: var(--color-accent-additional);
+  border: 0;
+  border-radius: 8px;
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-accent-hover);
+  }
+}

@@ -1,0 +1,28 @@
+@use "~var" as var;
+.btn {
+  @include var.transition(box-shadow);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 90px;
+  height: 90px;
+  margin: 0;
+  padding: 0;
+  color: var(--color-accent-additional);
+  background-color: var(--color-white);
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px rgb(243 243 243 / 50%);
+  transform: translate(-50%, -50%);
+  svg {
+    width: 19px;
+    height: 19px;
+    fill: currentcolor;
+  }
+  &:hover,
+  &:focus-visible {
+    box-shadow: 0 0 0 11px rgb(243 243 243 / 50%);
+  }
+}

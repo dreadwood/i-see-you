@@ -1,0 +1,53 @@
+@use "~var" as var;
+.accordion {
+  padding: 23px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-text-additional);
+  border-radius: 12px;
+}
+.btn {
+  @include var.transition(color);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  text-align: left;
+  letter-spacing: -0.02em;
+  background-color: transparent;
+  border: 0;
+  &:hover,
+  &:focus-visible {
+    color: var(--color-accent-additional);
+  }
+}
+.icon {
+  @include var.transition(transform);
+  display: block;
+  width: 32px;
+  height: 32px;
+  transform: rotate(180deg);
+  fill: currentcolor;
+  &.open {
+    transform: rotate(0);
+  }
+}
+.body {
+  @include var.transition(padding-top, height);
+  @include var.list-reset;
+  display: grid;
+  gap: 16px;
+  overflow: hidden;
+  font-size: 20px;
+  line-height: 32px;
+  b {
+    font-weight: 600;
+  }
+  &.open {
+    padding-top: 24px;
+  }
+}

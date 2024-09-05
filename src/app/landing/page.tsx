@@ -14,7 +14,7 @@ import Program from './components/Program/Program'
 export default function Landing(): JSX.Element {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <main className={styles.main}>
         <Hero />
         <Description />

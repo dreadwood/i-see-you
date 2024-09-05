@@ -1,4 +1,4 @@
-import { SocialLink } from '@landing/const'
+import { headerLinks, SocialLink } from '@landing/const'
 import Image from 'next/image'
 import photo from '@img/people/author-02.jpg'
 import Title from '@landing/UI/Title/Title'
@@ -55,7 +55,7 @@ const socialList = [
 
 export default function AboutAuthor(): JSX.Element {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id={headerLinks[1].htmlId}>
       <div className={styles.wrp}>
         <div className={styles.card}>
           <div className={styles.content}>

@@ -3,10 +3,11 @@ import Image from 'next/image'
 import photo from '@img/people/author-01.jpg'
 import Title from '@landing/UI/Title/Title'
 import styles from './Description.module.scss'
+import { headerLinks } from '@landing/const'
 
 export default function Description(): JSX.Element {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id={headerLinks[0].htmlId}>
       <div className={styles.wrp}>
         <Title text={`Описание <span>курса</span>`} />
         <div className={styles.columns}>

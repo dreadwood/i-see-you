@@ -33,7 +33,7 @@ const description = [
 
 export default function Hero(): JSX.Element {
   return (
-    <section className={styles.section}>
+    <section>
       <div className={styles.wrp}>
         <div className={styles.illustration}>
           <Image

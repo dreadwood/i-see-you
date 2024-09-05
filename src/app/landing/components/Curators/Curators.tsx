@@ -16,6 +16,7 @@ import illustration from '@img/illustration/illustration-03.jpg'
 
 import 'swiper/css'
 import styles from './Curators.module.scss'
+import { headerLinks } from '@landing/const'
 
 const curators = [
   {
@@ -78,7 +79,7 @@ export default function Curators(): JSX.Element {
   }, [])
   return (
     <>
-      <section className={styles.section}>
+      <section className={styles.section} id={headerLinks[2].htmlId}>
         <div className={styles.wrp}>
           <Title text={`Наши <span>кураторы</span>`} />
 

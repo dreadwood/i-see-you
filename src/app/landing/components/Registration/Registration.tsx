@@ -3,10 +3,11 @@ import CardForm from './partials/CardForm/CardForm'
 import CardPrice from './partials/CardPrice/CardPrice'
 import illustration from '@img/illustration/illustration-05.jpg'
 import styles from './Registration.module.scss'
+import { headerLinks } from '@landing/const'
 
 export default function Registration(): JSX.Element {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id={headerLinks[5].htmlId}>
       <div className={styles.wrp}>
         <CardForm className={styles.cardForm} />
         <CardPrice />

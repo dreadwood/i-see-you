@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import Title from '@landing/UI/Title/Title'
+import { headerLinks } from '@landing/const'
 import Accordion from './partials/Accordion/Accordion'
 import styles from './Program.module.scss'
 
@@ -63,7 +64,7 @@ const blocks = [
 
 export default function Program(): JSX.Element {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id={headerLinks[3].htmlId}>
       <div className={styles.wrp}>
         <div className={styles.top}>
           <Title className={styles.title} text={`Программа`} />

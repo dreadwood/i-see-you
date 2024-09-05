@@ -1,0 +1,49 @@
+@use "~var" as var;
+.field {
+  @include var.transition(border-color);
+  display: block;
+  width: 100%;
+  padding: 11px 19px;
+  font-family: var(--font-text);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+  text-align: left;
+  color: var(--color-text-additional);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  outline: none;
+  appearance: none;
+  &[disabled] {
+    cursor: not-allowed;
+  }
+  &::placeholder {
+    color: var(--color-border);
+  }
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  // webkit
+  &[type="number"]::-webkit-outer-spin-button,
+  &[type="number"]::-webkit-inner-spin-button {
+    margin: 0;
+    appearance: none;
+  }
+
+  // firefox
+  &[type="number"] {
+    appearance: textfield;
+  }
+
+  // for hidden key icon in safari
+  &::-webkit-credentials-auto-fill-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+}

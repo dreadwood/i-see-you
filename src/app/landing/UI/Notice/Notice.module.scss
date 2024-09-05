@@ -1,0 +1,52 @@
+@use "~var" as var;
+.notice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 15px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: var(--color-text-notice);
+  background-color: var(--color-bg-notice);
+  border: 1px solid var(--color-border-notice);
+  border-radius: 12px;
+  &.error {
+    color: var(--color-text-error-notice);
+    background-color: var(--color-bg-error-notice);
+    border-color: var(--color-border-error-notice);
+  }
+  @include var.breakpoint-xs {
+    padding: 12px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+.icon {
+  display: block;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  fill: currentcolor;
+}
+.close {
+  @include var.transition(color);
+  flex-shrink: 0;
+  margin: 0;
+  margin-left: auto;
+  padding: 0;
+  color: inherit;
+  background-color: transparent;
+  border: 0;
+  svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    fill: currentcolor;
+  }
+  &:hover,
+  &:focus-visible {
+    color: var(--color-text-additional);
+  }
+}

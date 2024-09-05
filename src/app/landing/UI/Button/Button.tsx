@@ -5,7 +5,7 @@ interface ButtonProps {
   text: string
   type?: 'button' | 'submit' | 'reset'
   className?: string
-  onCLick?: () => void
+  onCLick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
 export default function Button({

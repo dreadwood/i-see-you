@@ -1,3 +1,6 @@
+'use client'
+
+import { Fade } from 'react-awesome-reveal'
 import Description from './components/Description/Description'
 import AboutCourse from './components/AboutCourse/AboutCourse'
 import styles from './page.module.scss'
@@ -18,15 +21,17 @@ export default function Landing(): JSX.Element {
       <Header />
       <main className={styles.main}>
         <Hero />
-        <Description />
-        <WhyNeed />
-        <AboutAuthor />
-        <Curators />
-        <Program />
-        <Feedback />
-        <AboutCourse />
-        <Registration />
-        <ScrollTopButton />
+        <Fade cascade triggerOnce damping={0.1}>
+          <Description />
+          <WhyNeed />
+          <AboutAuthor />
+          <Curators />
+          <Program />
+          <Feedback />
+          <AboutCourse />
+          <Registration />
+          <ScrollTopButton />
+        </Fade>
       </main>
       <Footer />
     </>

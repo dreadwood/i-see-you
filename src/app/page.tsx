@@ -28,10 +28,10 @@ export default function Landing(): JSX.Element {
         <Feedback />
         <AboutCourse />
         <Registration />
-        <ScrollTopButton />
-        <VideoModal />
       </main>
       <Footer />
+      <ScrollTopButton />
+      <VideoModal />
     </>
   )
 }

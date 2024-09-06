@@ -1,18 +1,34 @@
 'use client'
 
-import Plyr from 'plyr'
-import { useEffect, useRef } from 'react'
+import dynamic from 'next/dynamic'
+import { useEffect } from 'react'
 
 import Icon from '@/components/Icon/Icon'
 import Overlay from '@/UI/Overlay/Overlay'
 import { useVideoStore } from '@/store/video'
 
-import 'plyr/dist/plyr.css'
+import 'plyr-react/plyr.css'
 import styles from './VideoModal.module.scss'
 
-export default function VideoModal(): JSX.Element {
-  const videoRef = useRef<HTMLVideoElement | null>(null)
+const Plyr = dynamic(() => import('plyr-react'), { ssr: false })
 
+type MediaType = 'audio' | 'video'
+
+const plyrOptions = {
+  controls: [
+    'play-large',
+    'play',
+    'progress',
+    'current-time',
+    'mute',
+    'volume',
+    'fullscreen'
+  ],
+  hideControls: false,
+  resetOnEnd: true
+}
+
+export default function VideoModal(): JSX.Element {
   const { isOpen, videoUrl, closeVideo } = useVideoStore()
 
   useEffect(() => {
@@ -23,30 +39,14 @@ export default function VideoModal(): JSX.Element {
     }
   }, [isOpen])
 
-  useEffect(() => {
-    if (!videoUrl) return
-    const player = new Plyr(videoRef.current || '', {
-      controls: [
-        'play-large',
-        'play',
-        'progress',
-        'current-time',
-        'mute',
-        'volume',
-        'fullscreen'
-      ],
-      hideControls: false,
-      resetOnEnd: true
-    })
-    player.source = {
-      type: 'video',
-      sources: [
-        {
-          src: videoUrl
-        }
-      ]
-    }
-  }, [videoUrl])
+  const source = {
+    type: 'video' as MediaType,
+    sources: [
+      {
+        src: videoUrl as string
+      }
+    ]
+  }
 
   return (
     <>
@@ -56,18 +56,11 @@ export default function VideoModal(): JSX.Element {
           <button className={styles.close} onClick={() => closeVideo()}>
             <Icon name="cross" />
           </button>
-          <div className={styles.container}>
-            <video
-              id="player"
-              width="1024"
-              height="576"
-              controls
-              preload="none"
-              ref={videoRef}
-            >
-              {/* <source src="/video/example.mp4" type="video/mp4" /> */}
-            </video>
-          </div>
+          {videoUrl && (
+            <div className={styles.container}>
+              <Plyr source={source} options={plyrOptions} />
+            </div>
+          )}
         </div>
       )}
     </>

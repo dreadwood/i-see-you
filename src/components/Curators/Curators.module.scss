@@ -73,7 +73,6 @@
   max-width: var(--container-max);
   margin: 0 auto;
   margin-top: 120px;
-  padding: 0 var(--paddings);
   img {
     display: block;
     width: 100%;
@@ -84,9 +83,9 @@
     content: "";
     position: absolute;
     top: 0;
-    left: var(--paddings);
+    left: 0;
     display: block;
-    width: calc(100% - var(--paddings) - var(--paddings));
+    width: 100%;
     height: 100%;
     background-image: linear-gradient(
       to left,
@@ -102,7 +101,6 @@
     margin-top: 40px;
   }
   @include var.breakpoint-sm {
-    padding: 0;
     &::before {
       content: none;
     }

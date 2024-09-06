@@ -4,8 +4,11 @@ import photo from '@img/people/author-01.jpg'
 import Title from '@landing/UI/Title/Title'
 import styles from './Description.module.scss'
 import { headerLinks } from '@landing/const'
+import { useVideoStore } from '@/store/video'
 
 export default function Description(): JSX.Element {
+  const { openVideo } = useVideoStore()
+
   return (
     <section className={styles.section} id={headerLinks[0].htmlId}>
       <div className={styles.wrp}>
@@ -43,7 +46,7 @@ export default function Description(): JSX.Element {
               quality={80}
               placeholder="blur"
             />
-            <PlayButton />
+            <PlayButton onClick={() => openVideo('/video/example.mp4')} />
           </div>
         </div>
       </div>

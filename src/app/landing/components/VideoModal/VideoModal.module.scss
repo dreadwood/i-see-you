@@ -1,0 +1,52 @@
+@use "~var" as var;
+.wrp {
+  --plyr-color-main: var(--color-bg-additional-2);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 12;
+  width: 100%;
+  max-width: 1024px;
+  padding: 32px;
+  transform: translate(-50%, -50%);
+  aspect-ratio: 16 / 9;
+  @include var.breakpoint-lg {
+    padding: 5px;
+  }
+}
+.close {
+  @include var.transition(background-color);
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  color: var(--color-white);
+  background-color: transparent;
+  border: 0;
+  svg {
+    display: block;
+    width: 24px;
+    height: 24px;
+    fill: currentcolor;
+  }
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-bg-additional-2);
+    border-radius: 4px;
+  }
+  @include var.breakpoint-lg {
+    top: 10px;
+    right: 10px;
+  }
+}
+.container {
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+}

@@ -3,13 +3,16 @@ import Image from 'next/image'
 import styles from './Slide.module.scss'
 import { StaticImport } from 'next/dist/shared/lib/get-img-props'
 import PlayButton from '@landing/UI/PlayButton/PlayButton'
+import { useVideoStore } from '@/store/video'
 
 interface SlideProps {
   img: StaticImport
+  videoUrl: string
   alt?: string
 }
 
-export default function Slide({ img, alt }: SlideProps): JSX.Element {
+export default function Slide({ img, videoUrl, alt }: SlideProps): JSX.Element {
+  const { openVideo } = useVideoStore()
   return (
     <div className={styles.slide}>
       <Image
@@ -20,7 +23,7 @@ export default function Slide({ img, alt }: SlideProps): JSX.Element {
         quality={80}
         placeholder="blur"
       />
-      <PlayButton />
+      <PlayButton onClick={() => openVideo(videoUrl)} />
     </div>
   )
 }

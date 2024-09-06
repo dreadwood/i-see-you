@@ -22,22 +22,26 @@ const curators = [
   {
     id: 1,
     photo: photoCurators1,
-    text: 'Микелаанджело Лодовикою, 40 лет'
+    text: 'Микелаанджело Лодовикою, 40 лет',
+    videoUrl: '/video/example.mp4'
   },
   {
     id: 2,
     photo: photoCurators2,
-    text: 'Леонардо да Винчи, 31 год'
+    text: 'Леонардо да Винчи, 31 год',
+    videoUrl: '/video/example.mp4'
   },
   {
     id: 3,
     photo: photoCurators3,
-    text: 'Донателло ди Никколо, 53 года'
+    text: 'Донателло ди Никколо, 53 года',
+    videoUrl: '/video/example.mp4'
   },
   {
     id: 4,
     photo: photoCurators1,
-    text: 'Микелаанджело Лодовикою, 40 лет'
+    text: 'Микелаанджело Лодовикою, 40 лет',
+    videoUrl: '/video/example.mp4'
   }
 ]
 
@@ -87,7 +91,7 @@ export default function Curators(): JSX.Element {
             <div className="swiper-wrapper">
               {curators.map((it) => (
                 <div className="swiper-slide" key={it.id}>
-                  <Slide img={it.photo} text={it.text} />
+                  <Slide img={it.photo} text={it.text} videoUrl={it.videoUrl} />
                 </div>
               ))}
             </div>

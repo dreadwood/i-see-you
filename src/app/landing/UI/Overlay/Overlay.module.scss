@@ -1,0 +1,11 @@
+@use "~var" as var;
+.overlay {
+  position: fixed;
+  z-index: 9;
+  display: none;
+  background-color: rgb(0 0 0 / 50%);
+  inset: 0;
+  &.show {
+    display: block;
+  }
+}

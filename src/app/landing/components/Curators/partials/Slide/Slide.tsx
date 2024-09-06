@@ -7,14 +7,22 @@ import { StaticImport } from 'next/dist/shared/lib/get-img-props'
 import PlayButton from '@landing/UI/PlayButton/PlayButton'
 import { useState } from 'react'
 import clsx from 'clsx'
+import { useVideoStore } from '@/store/video'
 
 interface SlideProps {
   img: StaticImport
   text: string
+  videoUrl: string
   alt?: string
 }
 
-export default function Slide({ img, text, alt }: SlideProps): JSX.Element {
+export default function Slide({
+  img,
+  text,
+  videoUrl,
+  alt
+}: SlideProps): JSX.Element {
+  const { openVideo } = useVideoStore()
   const [isLike, setLike] = useState<boolean>(false)
 
   return (
@@ -34,7 +42,7 @@ export default function Slide({ img, text, alt }: SlideProps): JSX.Element {
         >
           <Icon name="heart" />
         </button>
-        <PlayButton />
+        <PlayButton onClick={() => openVideo(videoUrl)} />
       </div>
       <div className={styles.text}>{text}</div>
     </div>

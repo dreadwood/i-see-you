@@ -14,6 +14,7 @@ import Header from './components/Header/Header'
 import Curators from './components/Curators/Curators'
 import Program from './components/Program/Program'
 import ScrollTopButton from './UI/ScrollTopButton/ScrollTopButton'
+import VideoModal from './components/VideoModal/VideoModal'
 
 export default function Landing(): JSX.Element {
   return (
@@ -27,11 +28,14 @@ export default function Landing(): JSX.Element {
           <AboutAuthor />
           <Curators />
           <Program />
-          <Feedback />
+        </Fade>
+        <Feedback />
+        <Fade cascade triggerOnce damping={0.1}>
           <AboutCourse />
           <Registration />
           <ScrollTopButton />
         </Fade>
+        <VideoModal />
       </main>
       <Footer />
     </>

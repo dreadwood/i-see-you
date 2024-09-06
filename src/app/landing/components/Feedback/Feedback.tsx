@@ -21,22 +21,26 @@ const students = [
   {
     id: 1,
     photo: photoStudent1,
-    description: 'студент 01'
+    description: 'студент 01',
+    videoUrl: '/video/example.mp4'
   },
   {
     id: 2,
     photo: photoStudent2,
-    description: 'студент 02'
+    description: 'студент 02',
+    videoUrl: '/video/example.mp4'
   },
   {
     id: 3,
     photo: photoStudent3,
-    description: 'студент 03'
+    description: 'студент 03',
+    videoUrl: '/video/example.mp4'
   },
   {
     id: 4,
     photo: photoStudent2,
-    description: 'студент 04'
+    description: 'студент 04',
+    videoUrl: '/video/example.mp4'
   }
 ]
 
@@ -45,16 +49,13 @@ export default function Feedback(): JSX.Element {
   const btnNextRef = useRef<HTMLButtonElement | null>(null)
   const swiperRef = useRef<HTMLDivElement | null>(null)
 
-  // console.log(styles.activeSlide)
   useEffect(() => {
     new Swiper(swiperRef.current || '', {
       modules: [Navigation],
-      // loop: true,
       navigation: {
         prevEl: btnPrevRef.current,
         nextEl: btnNextRef.current
       },
-      // slideActiveClass: styles.activeSlide,
       breakpoints: {
         900: {
           slidesPerView: 3,
@@ -93,7 +94,11 @@ export default function Feedback(): JSX.Element {
             <div className="swiper-wrapper">
               {students.map((it) => (
                 <div className="swiper-slide" key={it.id}>
-                  <Slide img={it.photo} alt={it.description} />
+                  <Slide
+                    img={it.photo}
+                    alt={it.description}
+                    videoUrl={it.videoUrl}
+                  />
                 </div>
               ))}
             </div>

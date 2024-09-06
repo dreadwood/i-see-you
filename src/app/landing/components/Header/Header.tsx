@@ -6,6 +6,7 @@ import styles from './Header.module.scss'
 import SocialLinks from '@landing/components/SocialLink/SocialLink'
 import { headerLinks, SocialLink } from '@landing/const'
 import { useEffect, useState } from 'react'
+import Overlay from '../../UI/Overlay/Overlay'
 
 const socialList = [
   {
@@ -58,10 +59,7 @@ export default function Header(): JSX.Element {
 
   return (
     <header className={styles.header}>
-      <div
-        className={clsx(styles.overlay, isOpen && styles.show)}
-        onClick={() => setOpen(false)}
-      ></div>
+      <Overlay isShow={isOpen} onClick={() => setOpen(false)} />
       <div className={styles.wrp}>
         <div className={styles.logo}>Я тебя вижу</div>
         <div className={clsx(styles.offcanvas, isOpen && styles.open)}>

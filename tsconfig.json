@@ -21,7 +21,6 @@
       "@/*": ["./src/*"],
       "@style/*": ["./src/assets/style/*"],
       "@fonts/*": ["./src/assets/fonts/*"],
-      "@landing/*": ["./src/app/landing/*"],
       "@img/*": ["./src/assets/img/*"],
     }
   },

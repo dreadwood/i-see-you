@@ -72,7 +72,7 @@ export default function CardForm({ className }: CardFormProps): JSX.Element {
       () => !noticeError && noticeMsg && setNoticeMsg(''),
       NOTICE_DISPLAY_TIME
     )
-  }, [noticeMsg])
+  }, [noticeMsg, noticeError])
 
   return (
     <div className={clsx(styles.card, className)}>

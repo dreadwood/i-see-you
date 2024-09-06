@@ -21,26 +21,26 @@ import styles from './Feedback.module.scss'
 const students = [
   {
     id: 1,
-    photo: photoStudent1,
-    description: 'студент 01',
+    photo: photoStudent1.src,
+    description: 'отзыв студента 01',
     videoUrl: '/video/example.mp4'
   },
   {
     id: 2,
-    photo: photoStudent2,
-    description: 'студент 02',
+    photo: photoStudent2.src,
+    description: 'отзыв студента 02',
     videoUrl: '/video/example.mp4'
   },
   {
     id: 3,
-    photo: photoStudent3,
-    description: 'студент 03',
+    photo: photoStudent3.src,
+    description: 'отзыв студента 03',
     videoUrl: '/video/example.mp4'
   },
   {
     id: 4,
-    photo: photoStudent2,
-    description: 'студент 04',
+    photo: photoStudent2.src,
+    description: 'отзыв студента 04',
     videoUrl: '/video/example.mp4'
   }
 ]
@@ -99,7 +99,7 @@ export default function Feedback({ isDarkImg }: FeedbackProps): JSX.Element {
                 <div className="swiper-slide" key={it.id}>
                   <Slide
                     img={it.photo}
-                    alt={it.description}
+                    description={it.description}
                     videoUrl={it.videoUrl}
                   />
                 </div>

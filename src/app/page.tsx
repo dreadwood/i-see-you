@@ -9,7 +9,6 @@ import Hero from '@/components/Hero/Hero'
 import Header from '@/components/Header/Header'
 import Curators from '@/components/Curators/Curators'
 import Program from '@/components/Program/Program'
-import VideoModal from '@/components/VideoModal/VideoModal'
 import ScrollTopButton from '@/UI/ScrollTopButton/ScrollTopButton'
 
 import styles from './page.module.scss'
@@ -31,7 +30,6 @@ export default function Landing(): JSX.Element {
       </main>
       <Footer />
       <ScrollTopButton />
-      <VideoModal />
     </>
   )
 }

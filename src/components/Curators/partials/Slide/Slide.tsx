@@ -1,16 +1,14 @@
 'use client'
 
-import Icon from '@/components/Icon/Icon'
-import Image from 'next/image'
-import styles from './Slide.module.scss'
-import { StaticImport } from 'next/dist/shared/lib/get-img-props'
-import PlayButton from '@/UI/PlayButton/PlayButton'
-import { useState } from 'react'
 import clsx from 'clsx'
-import { useVideoStore } from '@/store/video'
+import { useState } from 'react'
+import Icon from '@/components/Icon/Icon'
+import Video from '@/components/Video/Video'
+
+import styles from './Slide.module.scss'
 
 interface SlideProps {
-  img: StaticImport
+  img: string
   text: string
   videoUrl: string
   alt?: string
@@ -22,20 +20,18 @@ export default function Slide({
   videoUrl,
   alt
 }: SlideProps): JSX.Element {
-  const { openVideo } = useVideoStore()
   const [isLike, setLike] = useState<boolean>(false)
 
   return (
     <div className={styles.slide}>
       <div className={styles.photo}>
-        <Image src={img} alt={alt || ''} quality={80} placeholder="blur" />
+        <Video posterUrl={img} videoUrl={videoUrl} />
         <button
           className={clsx(styles.like, isLike && styles.actv)}
           onClick={() => setLike(!isLike)}
         >
           <Icon name="heart" />
         </button>
-        <PlayButton onClick={() => openVideo(videoUrl)} />
       </div>
       <div className={styles.text}>{text}</div>
     </div>

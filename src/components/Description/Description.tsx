@@ -1,17 +1,16 @@
-'use client'
-
-import Image from 'next/image'
-import PlayButton from '@/UI/PlayButton/PlayButton'
 import Title from '@/UI/Title/Title'
 import { headerLinks } from '@/app/const'
-import { useVideoStore } from '@/store/video'
+import Video from '@/components/Video/Video'
 import photo from '@img/people/author-01.jpg'
 
 import styles from './Description.module.scss'
 
-export default function Description(): JSX.Element {
-  const { openVideo } = useVideoStore()
+const video = {
+  url: '/video/example.mp4',
+  poster: photo.src
+}
 
+export default function Description(): JSX.Element {
   return (
     <section className={styles.section} id={headerLinks[0].htmlId}>
       <div className={styles.wrp}>
@@ -41,13 +40,7 @@ export default function Description(): JSX.Element {
             </p>
           </div>
           <div className={styles.video}>
-            <Image
-              src={photo}
-              alt={'Юрий Менячихин'}
-              quality={80}
-              placeholder="blur"
-            />
-            <PlayButton onClick={() => openVideo('/video/example.mp4')} />
+            <Video posterUrl={video.poster} videoUrl={video.url} />
           </div>
         </div>
       </div>

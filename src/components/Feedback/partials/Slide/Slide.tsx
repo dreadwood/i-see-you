@@ -1,22 +1,22 @@
-import Image from 'next/image'
-import { StaticImport } from 'next/dist/shared/lib/get-img-props'
-import PlayButton from '@/UI/PlayButton/PlayButton'
-import { useVideoStore } from '@/store/video'
+import Video from '@/components/Video/Video'
 
 import styles from './Slide.module.scss'
 
 interface SlideProps {
-  img: StaticImport
+  img: string
   videoUrl: string
-  alt?: string
+  description?: string
 }
 
-export default function Slide({ img, videoUrl, alt }: SlideProps): JSX.Element {
-  const { openVideo } = useVideoStore()
+export default function Slide({
+  img,
+  videoUrl,
+  description
+}: SlideProps): JSX.Element {
   return (
     <div className={styles.slide}>
-      <Image src={img} alt={alt || ''} quality={80} placeholder="blur" />
-      <PlayButton onClick={() => openVideo(videoUrl)} />
+      <Video posterUrl={img} videoUrl={videoUrl} />
+      <div className="visually-hidden">{description}</div>
     </div>
   )
 }

@@ -22,26 +22,26 @@ import styles from './Curators.module.scss'
 const curators = [
   {
     id: 1,
-    photo: photoCurators1,
+    photo: photoCurators1.src,
     text: 'Микелаанджело Лодовикою, 40 лет',
     videoUrl: '/video/example.mp4'
   },
   {
     id: 2,
-    photo: photoCurators2,
+    photo: photoCurators2.src,
     text: 'Леонардо да Винчи, 31 год',
     videoUrl: '/video/example.mp4'
   },
   {
     id: 3,
-    photo: photoCurators3,
+    photo: photoCurators3.src,
     text: 'Донателло ди Никколо, 53 года',
     videoUrl: '/video/example.mp4'
   },
   {
     id: 4,
-    photo: photoCurators1,
-    text: 'Микелаанджело Лодовикою, 40 лет',
+    photo: photoCurators2.src,
+    text: 'Микелаанджело Лодовикою, 31 лет',
     videoUrl: '/video/example.mp4'
   }
 ]

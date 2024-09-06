@@ -69,6 +69,7 @@
   }
 }
 .illustration {
+  position: relative;
   max-width: var(--container-max);
   margin: 0 auto;
   margin-top: 120px;
@@ -77,13 +78,33 @@
     display: block;
     width: 100%;
     height: auto;
-    max-width: 876px;
     margin: 0 auto;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: var(--paddings);
+    display: block;
+    width: calc(100% - var(--paddings) - var(--paddings));
+    height: 100%;
+    background-image: linear-gradient(
+      to left,
+      var(--color-white),
+      var(--color-white) 5%,
+      transparent 10%,
+      transparent 90%,
+      var(--color-white) 95%,
+      var(--color-white)
+    );
   }
   @include var.breakpoint-md {
     margin-top: 40px;
   }
   @include var.breakpoint-sm {
     padding: 0;
+    &::before {
+      content: none;
+    }
   }
 }

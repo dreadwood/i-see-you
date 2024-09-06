@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Button from '@/UI/Button/Button'
 import Icon from '@/components/Icon/Icon'
 import illustration from '@img/illustration/illustration-01.jpg'
+import illustrationDark from '@img/illustration/illustration-dark-01.jpg'
 
 import styles from './Hero.module.scss'
 
@@ -32,13 +33,17 @@ const description = [
   }
 ]
 
-export default function Hero(): JSX.Element {
+interface HeroProps {
+  isDarkImg?: boolean
+}
+
+export default function Hero({ isDarkImg }: HeroProps): JSX.Element {
   return (
     <section>
       <div className={styles.wrp}>
         <div className={styles.illustration}>
           <Image
-            src={illustration}
+            src={isDarkImg ? illustrationDark : illustration}
             alt={''}
             quality={80}
             sizes="640px"

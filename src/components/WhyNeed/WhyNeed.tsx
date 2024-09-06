@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Title from '@/UI/Title/Title'
 import Button from '@/UI/Button/Button'
 import illustration from '@img/illustration/illustration-02.jpg'
+import illustrationDark from '@img/illustration/illustration-dark-02.jpg'
 
 import styles from './WhyNeed.module.scss'
 
@@ -13,13 +14,17 @@ const list = [
   'Наборе привычек, которые должны компенсировать все выше сказанное.'
 ]
 
-export default function WhyNeed(): JSX.Element {
+interface WhyNeedProps {
+  isDarkImg?: boolean
+}
+
+export default function WhyNeed({ isDarkImg }: WhyNeedProps): JSX.Element {
   return (
     <section className={styles.section}>
       <div className={styles.wrp}>
         <div className={styles.illustration}>
           <Image
-            src={illustration}
+            src={isDarkImg ? illustrationDark : illustration}
             alt={'Юрий Менячихин'}
             sizes="580px"
             quality={80}

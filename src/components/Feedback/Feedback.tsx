@@ -13,6 +13,7 @@ import photoStudent1 from '@img/people/person-01.jpg'
 import photoStudent2 from '@img/people/person-02.jpg'
 import photoStudent3 from '@img/people/person-03.jpg'
 import illustration from '@img/illustration/illustration-04.jpg'
+import illustrationDark from '@img/illustration/illustration-dark-04.jpg'
 
 import 'swiper/css'
 import styles from './Feedback.module.scss'
@@ -44,7 +45,11 @@ const students = [
   }
 ]
 
-export default function Feedback(): JSX.Element {
+interface FeedbackProps {
+  isDarkImg?: boolean
+}
+
+export default function Feedback({ isDarkImg }: FeedbackProps): JSX.Element {
   const btnPrevRef = useRef<HTMLButtonElement | null>(null)
   const btnNextRef = useRef<HTMLButtonElement | null>(null)
   const swiperRef = useRef<HTMLDivElement | null>(null)
@@ -74,7 +79,7 @@ export default function Feedback(): JSX.Element {
       <div className={styles.wrp}>
         <div className={styles.illustration}>
           <Image
-            src={illustration}
+            src={isDarkImg ? illustrationDark : illustration}
             alt={''}
             quality={80}
             sizes="820px"

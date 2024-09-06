@@ -14,6 +14,7 @@ import photoCurators1 from '@img/people/person-02.jpg'
 import photoCurators2 from '@img/people/person-04.jpg'
 import photoCurators3 from '@img/people/person-06.jpg'
 import illustration from '@img/illustration/illustration-03.jpg'
+import illustrationDark from '@img/illustration/illustration-dark-03.jpg'
 
 import 'swiper/css'
 import styles from './Curators.module.scss'
@@ -45,7 +46,11 @@ const curators = [
   }
 ]
 
-export default function Curators(): JSX.Element {
+interface CuratorsProps {
+  isDarkImg?: boolean
+}
+
+export default function Curators({ isDarkImg }: CuratorsProps): JSX.Element {
   const btnPrevRef = useRef<HTMLButtonElement | null>(null)
   const btnNextRef = useRef<HTMLButtonElement | null>(null)
   const paginationRef = useRef<HTMLDivElement | null>(null)
@@ -114,7 +119,7 @@ export default function Curators(): JSX.Element {
 
       <div className={styles.illustration}>
         <Image
-          src={illustration}
+          src={isDarkImg ? illustrationDark : illustration}
           alt={''}
           quality={80}
           sizes="880px"

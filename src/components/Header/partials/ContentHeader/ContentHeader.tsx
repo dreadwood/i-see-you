@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import Icon from '@/components/Icon/Icon'
 import SocialLinks from '@/components/SocialLink/SocialLink'
 import Overlay from '@/UI/Overlay/Overlay'
-import { headerLinks, SocialLink } from '@/app/const'
+import { headerLinks } from '@/app/const'
 import { Link } from '@/services/strapi/types'
 
 import styles from './ContentHeader.module.scss'

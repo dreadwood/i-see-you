@@ -6,19 +6,25 @@ import CardForm from './partials/CardForm/CardForm'
 import CardPrice from './partials/CardPrice/CardPrice'
 
 import styles from './Registration.module.scss'
+import { getStrapiData } from '@/services/strapi/utils'
+import { StrapiConfig } from '@/services/strapi/config'
+import { RegistrationSection } from '@/services/strapi/types'
 
 interface RegistrationProps {
   isDarkImg?: boolean
 }
 
-export default function Registration({
+export default async function Registration({
   isDarkImg
-}: RegistrationProps): JSX.Element {
+}: RegistrationProps): Promise<JSX.Element> {
+  const { cost, costText, ...formData } =
+    await getStrapiData<RegistrationSection>(StrapiConfig.registration)
+
   return (
     <section className={styles.section} id={headerLinks[5].htmlId}>
       <div className={styles.wrp}>
-        <CardForm className={styles.cardForm} />
-        <CardPrice />
+        <CardForm formData={formData} className={styles.cardForm} />
+        <CardPrice cost={cost} costText={costText} />
         <div className={styles.illustration}>
           <Image
             src={isDarkImg ? illustrationDark : illustration}

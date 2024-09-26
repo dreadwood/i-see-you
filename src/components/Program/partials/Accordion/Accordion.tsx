@@ -1,18 +1,14 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import clsx from 'clsx'
 import Icon from '@/components/Icon/Icon'
 
 import styles from './Accordion.module.scss'
-
-type AccordionData = {
-  name: string
-  list: string[]
-}
+import { ProgramListSection } from '@/services/strapi/types'
 
 interface AccordionProps {
-  data: AccordionData
+  data: ProgramListSection
   className?: string
 }
 
@@ -41,7 +37,7 @@ export default function Accordion({
         ref={refList}
       >
         {data.list.map((it) => (
-          <li dangerouslySetInnerHTML={{ __html: it }} key={it} />
+          <li dangerouslySetInnerHTML={{ __html: it.item }} key={it.id} />
         ))}
       </ul>
     </div>

@@ -1,119 +1,34 @@
-'use client'
-
 import Image from 'next/image'
-import { useEffect, useRef } from 'react'
-import Swiper from 'swiper'
-import { Navigation, Pagination } from 'swiper/modules'
-
-import Icon from '@/components/Icon/Icon'
 import Title from '@/UI/Title/Title'
+import CuratorSlider from '@/UI/CuratorSlider/CuratorSlider'
 import { headerLinks } from '@/app/const'
-import Slide from './partials/Slide/Slide'
+import { CuratorsSection } from '@/services/strapi/types'
+import { getStrapiData } from '@/services/strapi/utils'
+import { StrapiConfig } from '@/services/strapi/config'
 
-import photoCurators1 from '@img/people/person-02.jpg'
-import photoCurators2 from '@img/people/person-04.jpg'
-import photoCurators3 from '@img/people/person-06.jpg'
 import illustration from '@img/illustration/illustration-03.jpg'
 import illustrationDark from '@img/illustration/illustration-dark-03.jpg'
 
-import 'swiper/css'
 import styles from './Curators.module.scss'
-
-const curators = [
-  {
-    id: 1,
-    photo: photoCurators1.src,
-    text: 'Микелаанджело Лодовикою, 40 лет',
-    videoUrl: '/video/example.mp4'
-  },
-  {
-    id: 2,
-    photo: photoCurators2.src,
-    text: 'Леонардо да Винчи, 31 год',
-    videoUrl: '/video/example.mp4'
-  },
-  {
-    id: 3,
-    photo: photoCurators3.src,
-    text: 'Донателло ди Никколо, 53 года',
-    videoUrl: '/video/example.mp4'
-  },
-  {
-    id: 4,
-    photo: photoCurators2.src,
-    text: 'Микелаанджело Лодовикою, 31 лет',
-    videoUrl: '/video/example.mp4'
-  }
-]
 
 interface CuratorsProps {
   isDarkImg?: boolean
 }
 
-export default function Curators({ isDarkImg }: CuratorsProps): JSX.Element {
-  const btnPrevRef = useRef<HTMLButtonElement | null>(null)
-  const btnNextRef = useRef<HTMLButtonElement | null>(null)
-  const paginationRef = useRef<HTMLDivElement | null>(null)
-  const swiperRef = useRef<HTMLDivElement | null>(null)
+export default async function Curators({
+  isDarkImg
+}: CuratorsProps): Promise<JSX.Element> {
+  const { title, people } = await getStrapiData<CuratorsSection>(
+    StrapiConfig.curators
+  )
 
-  useEffect(() => {
-    new Swiper(swiperRef.current || '', {
-      modules: [Navigation, Pagination],
-      loop: true,
-      pagination: {
-        el: paginationRef.current,
-        bulletClass: styles.paginationItem,
-        bulletActiveClass: styles.paginationActv,
-        bulletElement: 'div',
-        clickable: true
-      },
-      navigation: {
-        prevEl: btnPrevRef.current,
-        nextEl: btnNextRef.current
-      },
-      breakpoints: {
-        1200: {
-          slidesPerView: 3,
-          spaceBetween: 40
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 40
-        },
-        375: {
-          slidesPerView: 1
-        }
-      }
-    })
-  }, [])
   return (
     <>
       <section className={styles.section} id={headerLinks[2].htmlId}>
         <div className={styles.wrp}>
-          <Title text={`Наши <span>кураторы</span>`} />
+          <Title text={title} />
 
-          <div className={styles.container} ref={swiperRef}>
-            <div className="swiper-wrapper">
-              {curators.map((it) => (
-                <div className="swiper-slide" key={it.id}>
-                  <Slide img={it.photo} text={it.text} videoUrl={it.videoUrl} />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className={styles.bottom}>
-            <div className={styles.pagination} ref={paginationRef} />
-
-            <div className={styles.contols}>
-              <button className={styles.btn} ref={btnPrevRef}>
-                <Icon name="arrow-back" />
-              </button>
-              <button className={styles.btn} ref={btnNextRef}>
-                <Icon name="arrow-next" />
-              </button>
-            </div>
-          </div>
+          <CuratorSlider curators={people} />
         </div>
       </section>
 

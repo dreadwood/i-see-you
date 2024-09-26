@@ -1,8 +1,8 @@
 import clsx from 'clsx'
-import styles from './Field.module.scss'
+import styles from './FieldElement.module.scss'
 import { HTMLInputTypeAttribute } from 'react'
 
-interface FieldProps {
+interface FieldElementProps {
   value?: string
   placeholder?: string
   isRequired?: boolean
@@ -11,14 +11,14 @@ interface FieldProps {
   onChange?: (evt: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export default function Field({
+export default function FieldElement({
   type = 'text',
   value,
   placeholder,
   isRequired,
   className,
   onChange
-}: FieldProps): JSX.Element {
+}: FieldElementProps): JSX.Element {
   return (
     <input
       className={clsx(styles.field, className)}

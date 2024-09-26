@@ -1,4 +1,4 @@
-import Description from '@/components/Description/Description'
+import CourseDescription from '@/components/CourseDescription/CourseDescription'
 import AboutCourse from '@/components/AboutCourse/AboutCourse'
 import AboutAuthor from '@/components/AboutAuthor/AboutAuthor'
 import Footer from '@/components/Footer/Footer'
@@ -13,13 +13,13 @@ import ScrollTopButton from '@/UI/ScrollTopButton/ScrollTopButton'
 
 import styles from './page.module.scss'
 
-export default function Landing(): JSX.Element {
+export default async function Landing(): Promise<JSX.Element> {
   return (
     <>
       <Header />
       <main className={styles.main}>
         <Hero isDarkImg />
-        <Description />
+        <CourseDescription />
         <WhyNeed isDarkImg />
         <AboutAuthor />
         <Curators isDarkImg />

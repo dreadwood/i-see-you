@@ -19,14 +19,8 @@
     grid-template-columns: auto;
   }
 }
-.conten {
+.content {
   flex-shrink: 0;
-  p {
-    margin: 0;
-    &:not(:first-child) {
-      margin-top: 26px;
-    }
-  }
 }
 .accent {
   margin-top: 24px;

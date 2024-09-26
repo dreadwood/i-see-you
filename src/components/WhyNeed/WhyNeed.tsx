@@ -5,20 +5,20 @@ import illustration from '@img/illustration/illustration-02.jpg'
 import illustrationDark from '@img/illustration/illustration-dark-02.jpg'
 
 import styles from './WhyNeed.module.scss'
-
-const list = [
-  'Нежелании нести ответственность за семью и отношения.',
-  'Хронической усталости на работе.',
-  'Отсутствии планов на карьерный рост и повышение квалификации.',
-  'Нежелании заниматься поиском ресурсов.',
-  'Наборе привычек, которые должны компенсировать все выше сказанное.'
-]
+import { getStrapiData } from '@/services/strapi/utils'
+import { StrapiConfig } from '@/services/strapi/config'
+import { WhyNeedSection } from '@/services/strapi/types'
 
 interface WhyNeedProps {
   isDarkImg?: boolean
 }
 
-export default function WhyNeed({ isDarkImg }: WhyNeedProps): JSX.Element {
+export default async function WhyNeed({
+  isDarkImg
+}: WhyNeedProps): Promise<JSX.Element> {
+  const { title, buttonText, list } = await getStrapiData<WhyNeedSection>(
+    StrapiConfig.whyNeed
+  )
   return (
     <section className={styles.section}>
       <div className={styles.wrp}>
@@ -32,17 +32,17 @@ export default function WhyNeed({ isDarkImg }: WhyNeedProps): JSX.Element {
           />
         </div>
         <div className={styles.content}>
-          <Title text={`Зачем <span>мне это</span>`} />
+          <Title text={title} />
 
           <ul className={styles.list}>
             {list.map((it) => (
-              <li className={styles.item} key={it}>
-                {it}
+              <li className={styles.item} key={it.id}>
+                {it.item}
               </li>
             ))}
           </ul>
 
-          <Button className={styles.btn} text="Зарегистрироваться" />
+          <Button className={styles.btn} text={buttonText} />
         </div>
       </div>
     </section>

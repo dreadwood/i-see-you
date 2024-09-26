@@ -2,6 +2,9 @@ import Icon from '@/components/Icon/Icon'
 import Title from '@/UI/Title/Title'
 
 import styles from './AboutCourse.module.scss'
+import { StrapiConfig } from '@/services/strapi/config'
+import { getStrapiData } from '@/services/strapi/utils'
+import { AboutAuthorSection, AboutCourseSection } from '@/services/strapi/types'
 
 const content = [
   '<b>12 групповых онлайн встреч</b> с Юрием Менячихиным.',
@@ -12,16 +15,20 @@ const content = [
   'Техническое <b>обслуживание вашей личности</b> в авторизованном СТО.'
 ]
 
-export default function Description(): JSX.Element {
+export default async function AboutCourse(): Promise<JSX.Element> {
+  const { title, list } = await getStrapiData<AboutCourseSection>(
+    StrapiConfig.aboutCourse
+  )
+
   return (
     <section className={styles.section}>
       <div className={styles.wrp}>
-        <Title text={`За 21 день обучения <span>вы получите:</span>`} />
+        <Title text={title} />
         <ul className={styles.list}>
-          {content.map((it) => (
-            <li className={styles.item} key={it}>
+          {list.map((it) => (
+            <li className={styles.item} key={it.id}>
               <Icon className={styles.icon} name="circle-check-1" />
-              <div dangerouslySetInnerHTML={{ __html: it }} />
+              <div dangerouslySetInnerHTML={{ __html: it.item }} />
             </li>
           ))}
         </ul>

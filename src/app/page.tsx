@@ -1,4 +1,4 @@
-import Description from '@/components/Description/Description'
+import Description from '@/components/CourseDescription/CourseDescription'
 import AboutCourse from '@/components/AboutCourse/AboutCourse'
 import AboutAuthor from '@/components/AboutAuthor/AboutAuthor'
 import Footer from '@/components/Footer/Footer'

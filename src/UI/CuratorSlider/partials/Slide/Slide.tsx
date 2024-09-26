@@ -9,16 +9,14 @@ import styles from './Slide.module.scss'
 
 interface SlideProps {
   img: string
-  text: string
   videoUrl: string
-  alt?: string
+  text?: string
 }
 
 export default function Slide({
   img,
   text,
-  videoUrl,
-  alt
+  videoUrl
 }: SlideProps): JSX.Element {
   const [isLike, setLike] = useState<boolean>(false)
 
@@ -33,7 +31,7 @@ export default function Slide({
           <Icon name="heart" />
         </button>
       </div>
-      <div className={styles.text}>{text}</div>
+      {text && <div className={styles.text}>{text}</div>}
     </div>
   )
 }

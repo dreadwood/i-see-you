@@ -2,8 +2,6 @@
 .section {
   position: relative;
   margin-top: 120px;
-
-  // overflow-x: hidden;
   @include var.breakpoint-md {
     margin-top: 235px;
   }
@@ -62,62 +60,10 @@
     right: -20%;
   }
 }
-.title {
+.title.title {
   text-align: right;
   @include var.breakpoint-md {
     max-width: 280px;
     margin-left: auto;
-  }
-}
-.container {
-  width: 100%;
-  max-width: 810px;
-  margin-top: 40px;
-  margin-left: auto;
-  overflow: hidden;
-}
-.slider {
-  // overflow: hidden;
-
-  // display: flex;
-  // gap: 30px;
-}
-.bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 32px;
-  font-size: 20px;
-  line-height: 32px;
-  letter-spacing: -0.02em;
-}
-.count {
-  @include var.text-nowrap;
-}
-.contols {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  gap: 50px;
-}
-.btn {
-  @include var.transition(color);
-  display: block;
-  flex-shrink: 0;
-  width: max-content;
-  margin: 0;
-  padding: 0;
-  color: var(--color-bg-gray);
-  background-color: transparent;
-  border: 0;
-  svg {
-    display: block;
-    width: 30px;
-    height: 30px;
-    fill: currentcolor;
-  }
-  &:hover,
-  &:focus-visible {
-    color: var(--color-accent-additional);
   }
 }

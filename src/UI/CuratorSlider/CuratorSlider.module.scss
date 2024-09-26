@@ -1,0 +1,57 @@
+@use "~var" as var;
+.container {
+  width: 100%;
+  margin-top: 40px;
+  overflow: hidden;
+}
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 38px;
+}
+.pagination {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+}
+.paginationItem {
+  @include var.transition(width);
+  flex-shrink: 0;
+  width: 20px;
+  height: 12px;
+  background-color: var(--color-bg-gray);
+  border-radius: 20px;
+}
+.paginationActv {
+  width: 50px;
+}
+.contols {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 50px;
+  margin-left: auto;
+}
+.btn {
+  @include var.transition(color);
+  display: block;
+  flex-shrink: 0;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  color: var(--color-bg-gray);
+  background-color: transparent;
+  border: 0;
+  svg {
+    display: block;
+    width: 30px;
+    height: 30px;
+    fill: currentcolor;
+  }
+  &:hover,
+  &:focus-visible {
+    color: var(--color-accent-additional);
+  }
+}

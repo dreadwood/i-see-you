@@ -4,40 +4,30 @@ import Icon from '@/components/Icon/Icon'
 import illustration from '@img/illustration/illustration-01.jpg'
 import illustrationDark from '@img/illustration/illustration-dark-01.jpg'
 
+import { getStrapiData } from '@/services/strapi/utils'
+import { HeroSection } from '@/services/strapi/types'
+import { StrapiConfig } from '@/services/strapi/config'
+
 import styles from './Hero.module.scss'
 
-const description = [
-  {
-    id: 1,
-    icon: 'speedometer',
-    sup: 'Старт нового потока',
-    sub: '5 октября'
-  },
-  {
-    id: 2,
-    icon: 'clock',
-    sup: 'Длительность марафона',
-    sub: '21 день'
-  },
-  {
-    id: 3,
-    icon: 'globe',
-    sup: 'Продолжительность Zoom встречи',
-    sub: '10:00 - 12:00 (GMT+3)'
-  },
-  {
-    id: 4,
-    icon: 'users',
-    sup: 'Практические занятия с куратором в мини группах',
-    sub: '5-6 человек'
-  }
-]
+type HeroListItem = {
+  id: number
+  icon: string
+  text: string
+  colorText: string
+}
 
 interface HeroProps {
   isDarkImg?: boolean
 }
 
-export default function Hero({ isDarkImg }: HeroProps): JSX.Element {
+export default async function Hero({
+  isDarkImg
+}: HeroProps): Promise<JSX.Element> {
+  const { title, text, buttonText, list } = await getStrapiData<HeroSection>(
+    StrapiConfig.hero
+  )
+
   return (
     <section>
       <div className={styles.wrp}>
@@ -53,25 +43,21 @@ export default function Hero({ isDarkImg }: HeroProps): JSX.Element {
         </div>
 
         <div className={styles.content}>
-          <h1 className={styles.title}>
-            <span>“Я тебя вижу...”</span> Марафон инициация
-          </h1>
-          <p className={styles.text}>
-            Авторский курс Юрия Менячихина инициирует общение с внутренним
-            Ребенком, внутренним Подростком и внутренним Взрослым. В результате
-            детство наполняется теплом, юность освобождается от ответственности
-            за взрослую жизнь, а зрелость открывается любви и творчеству.
-          </p>
-          <Button className={styles.btn} text="Зарегистрироваться" />
+          <h1
+            className={styles.title}
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
+          <p className={styles.text}>{text}</p>
+          <Button className={styles.btn} text={buttonText} />
         </div>
 
         <ul className={styles.listCard}>
-          {description.map((it) => (
+          {(list as HeroListItem[]).map((it) => (
             <li className={styles.item} key={it.id}>
               <Icon className={styles.icon} name={it.icon} />
               <div>
-                {it.sup}
-                <div className={styles.accent}>{it.sub}</div>
+                {it.text}
+                <div className={styles.accent}>{it.colorText}</div>
               </div>
             </li>
           ))}

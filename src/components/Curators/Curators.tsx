@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Title from '@/UI/Title/Title'
-import CuratorSlider from '@/UI/CuratorSlider/CuratorSlider'
+import CuratorSlider from '@/components/CuratorSlider/CuratorSlider'
 import { headerLinks } from '@/app/const'
 import { CuratorsSection } from '@/services/strapi/types'
 import { getStrapiData } from '@/services/strapi/utils'

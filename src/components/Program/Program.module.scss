@@ -48,6 +48,11 @@
   border: 1px solid var(--color-border);
   border-radius: 16px;
   &.actv {
+    border-color: var(--color-dark-slate-blue);
+    box-shadow: 0 0 0 1px var(--color-dark-slate-blue) inset;
+  }
+  &.dark.actv {
+    border-color: var(--color-border);
     box-shadow: 0 0 0 1px var(--color-border) inset;
   }
   @include var.breakpoint-md {

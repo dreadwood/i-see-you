@@ -8,7 +8,13 @@ import { StrapiConfig } from '@/services/strapi/config'
 import { getStrapiData } from '@/services/strapi/utils'
 import { ProgramListSection, ProgramSection } from '@/services/strapi/types'
 
-export default async function Program(): Promise<JSX.Element> {
+interface ProgramProps {
+  isDark?: boolean
+}
+
+export default async function Program({
+  isDark
+}: ProgramProps): Promise<JSX.Element> {
   const programData = getStrapiData<ProgramSection>(StrapiConfig.program)
   const programListData = getStrapiData<ProgramListSection[]>(
     StrapiConfig.programList
@@ -30,7 +36,11 @@ export default async function Program(): Promise<JSX.Element> {
           <div className={styles.groupList}>
             {waves.map((it) => (
               <div
-                className={clsx(styles.groupItem, it.active && styles.actv)}
+                className={clsx(
+                  styles.groupItem,
+                  isDark && styles.dark,
+                  it.active && styles.actv
+                )}
                 key={it.id}
               >
                 <div className={styles.groupName}>{it.name}</div>

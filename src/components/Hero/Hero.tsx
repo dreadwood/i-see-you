@@ -47,7 +47,10 @@ export default async function Hero({
             className={styles.title}
             dangerouslySetInnerHTML={{ __html: title }}
           />
-          <p className={styles.text}>{text}</p>
+          <p
+            className={styles.text}
+            dangerouslySetInnerHTML={{ __html: text.split('\n').join('<br>') }}
+          />
           <Button className={styles.btn} text={buttonText} />
         </div>
 

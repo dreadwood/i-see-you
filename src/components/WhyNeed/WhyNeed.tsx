@@ -10,11 +10,11 @@ import { StrapiConfig } from '@/services/strapi/config'
 import { WhyNeedSection } from '@/services/strapi/types'
 
 interface WhyNeedProps {
-  isDarkImg?: boolean
+  isDark?: boolean
 }
 
 export default async function WhyNeed({
-  isDarkImg
+  isDark
 }: WhyNeedProps): Promise<JSX.Element> {
   const { title, buttonText, list } = await getStrapiData<WhyNeedSection>(
     StrapiConfig.whyNeed
@@ -24,7 +24,7 @@ export default async function WhyNeed({
       <div className={styles.wrp}>
         <div className={styles.illustration}>
           <Image
-            src={isDarkImg ? illustrationDark : illustration}
+            src={isDark ? illustrationDark : illustration}
             alt={'Юрий Менячихин'}
             sizes="580px"
             quality={80}

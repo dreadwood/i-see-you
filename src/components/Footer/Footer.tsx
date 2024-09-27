@@ -5,13 +5,20 @@ import { StrapiConfig } from '@/services/strapi/config'
 import { FooterSection } from '@/services/strapi/types'
 
 import styles from './Footer.module.scss'
+import clsx from 'clsx'
 
-export default async function Footer(): Promise<JSX.Element> {
+interface FooterProps {
+  isDark?: boolean
+}
+
+export default async function Footer({
+  isDark
+}: FooterProps): Promise<JSX.Element> {
   const { text, copyrightDate, socialLinks, contactLinks, textLinks } =
     await getStrapiData<FooterSection>(StrapiConfig.footer)
 
   return (
-    <footer className={styles.footer}>
+    <footer className={clsx(styles.footer, isDark && styles.dark)}>
       <div className={styles.wrp}>
         <div>
           <p className={styles.text}>{text}</p>

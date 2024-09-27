@@ -9,6 +9,7 @@ import { HeroSection } from '@/services/strapi/types'
 import { StrapiConfig } from '@/services/strapi/config'
 
 import styles from './Hero.module.scss'
+import clsx from 'clsx'
 
 type HeroListItem = {
   id: number
@@ -18,11 +19,11 @@ type HeroListItem = {
 }
 
 interface HeroProps {
-  isDarkImg?: boolean
+  isDark?: boolean
 }
 
 export default async function Hero({
-  isDarkImg
+  isDark
 }: HeroProps): Promise<JSX.Element> {
   const { title, text, buttonText, list } = await getStrapiData<HeroSection>(
     StrapiConfig.hero
@@ -33,7 +34,7 @@ export default async function Hero({
       <div className={styles.wrp}>
         <div className={styles.illustration}>
           <Image
-            src={isDarkImg ? illustrationDark : illustration}
+            src={isDark ? illustrationDark : illustration}
             alt={''}
             quality={80}
             sizes="640px"
@@ -54,7 +55,7 @@ export default async function Hero({
           <Button className={styles.btn} text={buttonText} />
         </div>
 
-        <ul className={styles.listCard}>
+        <ul className={clsx(styles.listCard, isDark && styles.dark)}>
           {(list as HeroListItem[]).map((it) => (
             <li className={styles.item} key={it.id}>
               <Icon className={styles.icon} name={it.icon} />

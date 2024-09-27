@@ -2,8 +2,11 @@
 .card {
   padding: 32px;
   color: var(--color-white);
-  background-color: var(--color-bg-additional-2);
+  background-color: var(--color-dark-slate-blue);
   border-radius: 16px;
+  &.dark {
+    background-color: var(--color-bg-additional-2);
+  }
 }
 .title {
   margin: 0;

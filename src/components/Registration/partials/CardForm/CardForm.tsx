@@ -25,11 +25,13 @@ type FormData = {
 
 interface CardFormProps {
   formData: FormData
+  isDark?: boolean
   className?: string
 }
 
 export default function CardForm({
   formData,
+  isDark,
   className
 }: CardFormProps): JSX.Element {
   const {
@@ -110,7 +112,7 @@ export default function CardForm({
   }, [noticeMsg, noticeError])
 
   return (
-    <div className={clsx(styles.card, className)}>
+    <div className={clsx(styles.card, isDark && styles.dark, className)}>
       <h2 className={styles.title}>{formTitle}</h2>
       <p className={styles.text}>{formText}</p>
       {noticeMsg.length !== 0 && (

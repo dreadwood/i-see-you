@@ -11,11 +11,11 @@ import { StrapiConfig } from '@/services/strapi/config'
 import { RegistrationSection } from '@/services/strapi/types'
 
 interface RegistrationProps {
-  isDarkImg?: boolean
+  isDark?: boolean
 }
 
 export default async function Registration({
-  isDarkImg
+  isDark
 }: RegistrationProps): Promise<JSX.Element> {
   const { cost, costText, ...formData } =
     await getStrapiData<RegistrationSection>(StrapiConfig.registration)
@@ -23,11 +23,15 @@ export default async function Registration({
   return (
     <section className={styles.section} id={headerLinks[5].htmlId}>
       <div className={styles.wrp}>
-        <CardForm formData={formData} className={styles.cardForm} />
+        <CardForm
+          formData={formData}
+          isDark={isDark}
+          className={styles.cardForm}
+        />
         <CardPrice cost={cost} costText={costText} />
         <div className={styles.illustration}>
           <Image
-            src={isDarkImg ? illustrationDark : illustration}
+            src={isDark ? illustrationDark : illustration}
             alt={''}
             quality={80}
             sizes="730px"

@@ -12,11 +12,11 @@ import illustrationDark from '@img/illustration/illustration-dark-03.jpg'
 import styles from './Curators.module.scss'
 
 interface CuratorsProps {
-  isDarkImg?: boolean
+  isDark?: boolean
 }
 
 export default async function Curators({
-  isDarkImg
+  isDark
 }: CuratorsProps): Promise<JSX.Element> {
   const { title, people } = await getStrapiData<CuratorsSection>(
     StrapiConfig.curators
@@ -34,7 +34,7 @@ export default async function Curators({
 
       <div className={styles.illustration}>
         <Image
-          src={isDarkImg ? illustrationDark : illustration}
+          src={isDark ? illustrationDark : illustration}
           alt={''}
           quality={80}
           sizes="880px"

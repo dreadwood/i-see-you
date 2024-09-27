@@ -18,17 +18,17 @@ export default async function Landing(): Promise<JSX.Element> {
     <>
       <Header />
       <main className={styles.main}>
-        <Hero isDarkImg />
+        <Hero isDark />
         <CourseDescription />
-        <WhyNeed isDarkImg />
+        <WhyNeed isDark />
         <AboutAuthor />
-        <Curators isDarkImg />
+        <Curators isDark />
         <Program />
-        <Feedback isDarkImg />
+        <Feedback isDark />
         <AboutCourse />
-        <Registration isDarkImg />
+        <Registration isDark />
       </main>
-      <Footer />
+      <Footer isDark />
       <ScrollTopButton />
     </>
   )

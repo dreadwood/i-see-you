@@ -11,11 +11,11 @@ import illustrationDark from '@img/illustration/illustration-dark-04.jpg'
 import styles from './Feedback.module.scss'
 
 interface FeedbackProps {
-  isDarkImg?: boolean
+  isDark?: boolean
 }
 
 export default async function Feedback({
-  isDarkImg
+  isDark
 }: FeedbackProps): Promise<JSX.Element> {
   const { title, people } = await getStrapiData<FeedbackSection>(
     StrapiConfig.feedback
@@ -26,7 +26,7 @@ export default async function Feedback({
       <div className={styles.wrp}>
         <div className={styles.illustration}>
           <Image
-            src={isDarkImg ? illustrationDark : illustration}
+            src={isDark ? illustrationDark : illustration}
             alt={''}
             quality={80}
             sizes="820px"

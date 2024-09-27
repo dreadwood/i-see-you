@@ -19,8 +19,11 @@ export async function getStrapiData<T>(config: SectionConfig): Promise<T> {
 }
 
 export function getStrapiFileData(fileObj: FileObj) {
+  const path =
+    process.env.NEXT_PUBLIC_STRAPI_UR === 'true' ? getStrapiURL() : ''
+
   return {
-    url: getStrapiURL() + fileObj.data.attributes.url,
+    url: path + fileObj.data.attributes.url,
     name: fileObj.data.attributes.name,
     caption: fileObj.data.attributes.caption,
     width: fileObj.data.attributes.width,

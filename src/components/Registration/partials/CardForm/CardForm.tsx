@@ -5,9 +5,10 @@ import { Dispatch, useEffect, useState } from 'react'
 import Button from '@/UI/Button/Button'
 import FieldElement from '@/UI/FieldElement/FieldElement'
 import Notice from '@/UI/Notice/Notice'
+import { Field } from '@/services/strapi/types'
+import { fetchCreateClient } from '@/services/strapi/fetch'
 
 import styles from './CardForm.module.scss'
-import { Field } from '@/services/strapi/types'
 
 const NOTICE_DISPLAY_TIME = 3000
 
@@ -68,7 +69,7 @@ export default function CardForm({
     setTelegram('')
   }
 
-  function handleFormSubmit(
+  async function handleFormSubmit(
     evt: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) {
     evt.preventDefault()
@@ -94,14 +95,26 @@ export default function CardForm({
         return
     }
 
-    setNoticeMsg(formSuccessfulMsg)
-    setNoticeError(false)
+    const client = { name, email, tel, telegram }
 
-    // TODO: 2024-09-05 / add fetch
-    const result = { name, email, tel, telegram }
-    console.log(result)
+    try {
+      const res = await fetchCreateClient(client)
 
-    resetForm()
+      if (res.ok) {
+        setNoticeMsg(formSuccessfulMsg)
+        setNoticeError(false)
+        resetForm()
+      } else {
+        throw new Error(`${res.status}: ${res.statusText}`)
+      }
+    } catch (err) {
+      console.error(err)
+
+      setNoticeMsg(
+        'Произошла ошибка при отправке формы. Если ошибка повторится, свяжитесь с нами. Контакты внизу сайта.'
+      )
+      setNoticeError(true)
+    }
   }
 
   useEffect(() => {

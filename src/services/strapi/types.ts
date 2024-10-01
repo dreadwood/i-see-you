@@ -170,3 +170,10 @@ export type FooterSection = {
   contactLinks: Link[]
   textLinks: Link[]
 }
+
+export type ClientData = {
+  name: string
+  email?: string
+  tel?: string
+  telegram?: string
+}

@@ -1,4 +1,4 @@
-import { ClientData } from './types'
+import { ClientData, SectionConfig } from './types'
 import { getStrapiURL } from './utils'
 
 export async function fetchCreateClient(client: ClientData): Promise<Response> {
@@ -17,4 +17,15 @@ export async function fetchCreateClient(client: ClientData): Promise<Response> {
   })
 
   return res
+}
+
+export async function fetchGetPageData<T>(config: SectionConfig): Promise<T> {
+  const baseUrl = getStrapiURL()
+
+  const response = await fetch(`${baseUrl}/api/landing?${config.params}`, {
+    cache: 'no-store'
+  })
+  const data = await response.json()
+
+  return data.data.attributes[config.name]
 }

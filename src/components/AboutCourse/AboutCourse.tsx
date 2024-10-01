@@ -3,8 +3,8 @@ import Title from '@/UI/Title/Title'
 
 import styles from './AboutCourse.module.scss'
 import { StrapiConfig } from '@/services/strapi/config'
-import { getStrapiData } from '@/services/strapi/utils'
-import { AboutAuthorSection, AboutCourseSection } from '@/services/strapi/types'
+import { fetchGetPageData } from '@/services/strapi/fetch'
+import { AboutCourseSection } from '@/services/strapi/types'
 
 const content = [
   '<b>12 групповых онлайн встреч</b> с Юрием Менячихиным.',
@@ -16,7 +16,7 @@ const content = [
 ]
 
 export default async function AboutCourse(): Promise<JSX.Element> {
-  const { title, list } = await getStrapiData<AboutCourseSection>(
+  const { title, list } = await fetchGetPageData<AboutCourseSection>(
     StrapiConfig.aboutCourse
   )
 

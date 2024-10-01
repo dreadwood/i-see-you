@@ -1,15 +1,14 @@
 import Image from 'next/image'
+import clsx from 'clsx'
 import Button from '@/UI/Button/Button'
 import Icon from '@/components/Icon/Icon'
 import illustration from '@img/illustration/illustration-01.jpg'
 import illustrationDark from '@img/illustration/illustration-dark-01.jpg'
-
-import { getStrapiData } from '@/services/strapi/utils'
+import { fetchGetPageData } from '@/services/strapi/fetch'
 import { HeroSection } from '@/services/strapi/types'
 import { StrapiConfig } from '@/services/strapi/config'
 
 import styles from './Hero.module.scss'
-import clsx from 'clsx'
 
 type HeroListItem = {
   id: number
@@ -25,7 +24,7 @@ interface HeroProps {
 export default async function Hero({
   isDark
 }: HeroProps): Promise<JSX.Element> {
-  const { title, text, buttonText, list } = await getStrapiData<HeroSection>(
+  const { title, text, buttonText, list } = await fetchGetPageData<HeroSection>(
     StrapiConfig.hero
   )
 

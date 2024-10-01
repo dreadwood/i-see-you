@@ -3,11 +3,11 @@ import Title from '@/UI/Title/Title'
 import Button from '@/UI/Button/Button'
 import illustration from '@img/illustration/illustration-02.jpg'
 import illustrationDark from '@img/illustration/illustration-dark-02.jpg'
-
-import styles from './WhyNeed.module.scss'
-import { getStrapiData } from '@/services/strapi/utils'
 import { StrapiConfig } from '@/services/strapi/config'
 import { WhyNeedSection } from '@/services/strapi/types'
+import { fetchGetPageData } from '@/services/strapi/fetch'
+
+import styles from './WhyNeed.module.scss'
 
 interface WhyNeedProps {
   isDark?: boolean
@@ -16,7 +16,7 @@ interface WhyNeedProps {
 export default async function WhyNeed({
   isDark
 }: WhyNeedProps): Promise<JSX.Element> {
-  const { title, buttonText, list } = await getStrapiData<WhyNeedSection>(
+  const { title, buttonText, list } = await fetchGetPageData<WhyNeedSection>(
     StrapiConfig.whyNeed
   )
   return (

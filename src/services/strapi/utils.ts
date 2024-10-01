@@ -1,22 +1,13 @@
-import { FileObj, SectionConfig } from './types'
+import { FileObj } from './types'
 
-export function getStrapiURL() {
-  return process.env.NEXT_PUBLIC_STRAPI_URL ?? 'http://localhost:1337'
-}
-
-export async function getStrapiData<T>(config: SectionConfig): Promise<T> {
-  const baseUrl = getStrapiURL()
-
-  const response = await fetch(`${baseUrl}/api/landing?${config.params}`, {
-    cache: 'no-store'
-  })
-  const data = await response.json()
-
-  return data.data.attributes[config.name]
+export function getStrapiURL(): string {
+  return process.env.NEXT_PUBLIC_DEV_MODE === 'true'
+    ? 'http://localhost:1337'
+    : ''
 }
 
 export function getStrapiFileData(fileObj: FileObj) {
-  const path = process.env.NEXT_PUBLIC_DEV_MODE === 'true' ? getStrapiURL() : ''
+  const path = getStrapiURL()
 
   return {
     url: path + fileObj.data.attributes.url,
@@ -27,7 +18,3 @@ export function getStrapiFileData(fileObj: FileObj) {
     mime: fileObj.data.attributes.mime
   }
 }
-
-// export async function createClient(): Promise<> {
-
-// }

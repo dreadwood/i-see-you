@@ -2,11 +2,11 @@ import clsx from 'clsx'
 import Title from '@/UI/Title/Title'
 import { headerLinks } from '@/app/const'
 import Accordion from './partials/Accordion/Accordion'
+import { StrapiConfig } from '@/services/strapi/config'
+import { fetchGetPageData } from '@/services/strapi/fetch'
+import { ProgramListSection, ProgramSection } from '@/services/strapi/types'
 
 import styles from './Program.module.scss'
-import { StrapiConfig } from '@/services/strapi/config'
-import { getStrapiData } from '@/services/strapi/utils'
-import { ProgramListSection, ProgramSection } from '@/services/strapi/types'
 
 interface ProgramProps {
   isDark?: boolean
@@ -15,8 +15,8 @@ interface ProgramProps {
 export default async function Program({
   isDark
 }: ProgramProps): Promise<JSX.Element> {
-  const programData = getStrapiData<ProgramSection>(StrapiConfig.program)
-  const programListData = getStrapiData<ProgramListSection[]>(
+  const programData = fetchGetPageData<ProgramSection>(StrapiConfig.program)
+  const programListData = fetchGetPageData<ProgramListSection[]>(
     StrapiConfig.programList
   )
 

@@ -2,9 +2,8 @@ import Image from 'next/image'
 import FeedbackSlider from '@/components/FeedbackSlider/FeedbackSlider'
 import Title from '@/UI/Title/Title'
 import { FeedbackSection } from '@/services/strapi/types'
-import { getStrapiData } from '@/services/strapi/utils'
 import { StrapiConfig } from '@/services/strapi/config'
-
+import { fetchGetPageData } from '@/services/strapi/fetch'
 import illustration from '@img/illustration/illustration-04.jpg'
 import illustrationDark from '@img/illustration/illustration-dark-04.jpg'
 
@@ -17,7 +16,7 @@ interface FeedbackProps {
 export default async function Feedback({
   isDark
 }: FeedbackProps): Promise<JSX.Element> {
-  const { title, people } = await getStrapiData<FeedbackSection>(
+  const { title, people } = await fetchGetPageData<FeedbackSection>(
     StrapiConfig.feedback
   )
 

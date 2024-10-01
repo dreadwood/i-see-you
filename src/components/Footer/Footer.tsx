@@ -1,11 +1,11 @@
+import clsx from 'clsx'
 import Icon from '@/components/Icon/Icon'
 import SocialLinks from '@/components/SocialLink/SocialLink'
-import { getStrapiData } from '@/services/strapi/utils'
 import { StrapiConfig } from '@/services/strapi/config'
 import { FooterSection } from '@/services/strapi/types'
+import { fetchGetPageData } from '@/services/strapi/fetch'
 
 import styles from './Footer.module.scss'
-import clsx from 'clsx'
 
 interface FooterProps {
   isDark?: boolean
@@ -15,7 +15,7 @@ export default async function Footer({
   isDark
 }: FooterProps): Promise<JSX.Element> {
   const { text, copyrightDate, socialLinks, contactLinks, textLinks } =
-    await getStrapiData<FooterSection>(StrapiConfig.footer)
+    await fetchGetPageData<FooterSection>(StrapiConfig.footer)
 
   return (
     <footer className={clsx(styles.footer, isDark && styles.dark)}>

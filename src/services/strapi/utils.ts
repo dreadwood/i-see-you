@@ -7,15 +7,12 @@ export function getStrapiURL() {
 export async function getStrapiData<T>(config: SectionConfig): Promise<T> {
   const baseUrl = getStrapiURL()
 
-  try {
-    const response = await fetch(`${baseUrl}/api/landing?${config.params}`)
-    const data = await response.json()
+  const response = await fetch(`${baseUrl}/api/landing?${config.params}`, {
+    cache: 'no-store'
+  })
+  const data = await response.json()
 
-    return data.data.attributes[config.name]
-  } catch (error) {
-    console.log('error:', error)
-    throw error
-  }
+  return data.data.attributes[config.name]
 }
 
 export function getStrapiFileData(fileObj: FileObj) {
@@ -30,3 +27,7 @@ export function getStrapiFileData(fileObj: FileObj) {
     mime: fileObj.data.attributes.mime
   }
 }
+
+// export async function createClient(): Promise<> {
+
+// }

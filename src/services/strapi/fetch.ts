@@ -20,11 +20,12 @@ export async function fetchCreateClient(client: ClientData): Promise<Response> {
 }
 
 export async function fetchGetPageData<T>(config: SectionConfig): Promise<T> {
-  const baseUrl = getStrapiURL()
-
-  const response = await fetch(`${baseUrl}/api/landing?${config.params}`, {
-    cache: 'no-store'
-  })
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/landing?${config.params}`,
+    {
+      cache: 'no-store'
+    }
+  )
   const data = await response.json()
 
   return data.data.attributes[config.name]

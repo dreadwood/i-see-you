@@ -60,17 +60,15 @@
 .content {
   width: 100%;
   max-width: 592px;
-  padding-top: 134px;
-  padding-bottom: 92px;
+  padding-top: 98px;
+  padding-bottom: 56px;
   @include var.breakpoint-lg {
-    max-width: 360px;
-    padding-top: 104px;
-    padding-bottom: 56px;
+    max-width: none;
+    padding-right: 410px;
   }
   @include var.breakpoint-md {
-    max-width: 485px;
     padding-top: 528px;
-    padding-bottom: 56px;
+    padding-right: 0;
   }
   @include var.breakpoint-sm {
     padding-top: 490px;

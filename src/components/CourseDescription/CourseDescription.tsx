@@ -1,13 +1,12 @@
 import Title from '@/UI/Title/Title'
-import { headerLinks } from '@/app/const'
 import Video from '@/components/Video/Video'
-
+import { headerLinks } from '@/app/const'
 import { StrapiConfig } from '@/services/strapi/config'
 import { getStrapiFileData } from '@/services/strapi/utils'
 import { CourseDescriptionSection } from '@/services/strapi/types'
+import { fetchGetPageData } from '@/services/strapi/fetch'
 
 import styles from './CourseDescription.module.scss'
-import { fetchGetPageData } from '@/services/strapi/fetch'
 
 export default async function CourseDescription(): Promise<JSX.Element> {
   const { title, text, highlightedText, posterVideo, video } =

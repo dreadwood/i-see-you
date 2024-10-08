@@ -1,0 +1,48 @@
+@use "~var" as var;
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  @include var.breakpoint-xs {
+    gap: 6px;
+  }
+}
+.btn {
+  @include var.transition(color, background-color, border-color);
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: max-content;
+  height: 32px;
+  min-width: 32px;
+  margin: 0;
+  padding: 0 4px;
+  font-family: var(--font-text);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--color-text-additional-3);
+  text-decoration: none;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-4);
+  border-radius: 8px;
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: currentcolor;
+  }
+  &:not(.ellipsis, .actv):hover,
+  &:not(.ellipsis, .actv):focus-visible {
+    background-color: var(--color-accent-additional-2-10);
+  }
+  &.actv {
+    color: var(--color-white);
+    background-color: var(--color-accent-additional-2);
+    border-color: var(--color-accent-additional-2);
+  }
+  &.ellipsis {
+    border-color: var(--color-white);
+  }
+}

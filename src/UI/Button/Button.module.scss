@@ -1,11 +1,13 @@
 @use "~var" as var;
 .btn {
-  @include var.transition(background-color);
-  display: block;
-  justify-self: end;
+  @include var.transition(color, background-color, border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
   width: max-content;
   margin: 0;
-  padding: 12px 16px;
+  padding: 11px 15px;
   font-family: var(--font-text);
   font-size: 16px;
   line-height: 28px;
@@ -13,10 +15,35 @@
   text-align: center;
   color: var(--color-white);
   background-color: var(--color-accent-additional);
-  border: 0;
+  border: 1px solid var(--color-accent-additional);
   border-radius: 8px;
-  &:hover,
-  &:focus-visible {
-    background-color: var(--color-accent-hover);
+  svg {
+    flex-shrink: 0;
+    fill: currentcolor;
+  }
+  &.orange {
+    &:hover,
+    &:focus-visible {
+      background-color: var(--color-accent-hover);
+      border-color: var(--color-accent-hover);
+    }
+  }
+  &.ghost {
+    color: var(--color-text-additional);
+    background-color: transparent;
+    border: 1px solid var(--color-text-additional);
+    &:hover,
+    &:focus-visible {
+      color: var(--color-white);
+      background-color: var(--color-accent-additional-2);
+      border-color: var(--color-accent-additional-2);
+    }
+  }
+  &.size2 {
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+  @include var.breakpoint-md {
+    width: 100%;
   }
 }

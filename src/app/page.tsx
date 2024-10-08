@@ -10,14 +10,13 @@ import Header from '@/components/Header/Header'
 import Curators from '@/components/Curators/Curators'
 import Program from '@/components/Program/Program'
 import ScrollTopButton from '@/UI/ScrollTopButton/ScrollTopButton'
-
-import styles from './page.module.scss'
+import ListArticle from '@/components/ListArticle/ListArticle'
 
 export default function Landing(): JSX.Element {
   return (
     <>
       <Header />
-      <main className={styles.main}>
+      <main>
         <Hero />
         <Description />
         <WhyNeed />
@@ -26,6 +25,7 @@ export default function Landing(): JSX.Element {
         <Program />
         <Feedback />
         <AboutCourse />
+        <ListArticle title="Наш <span>блог</span>" isBlogLink />
         <Registration />
       </main>
       <Footer />

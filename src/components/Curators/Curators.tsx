@@ -4,7 +4,7 @@ import CuratorSlider from '@/components/CuratorSlider/CuratorSlider'
 import { headerLinks } from '@/app/const'
 import { CuratorsSection } from '@/services/strapi/types'
 import { fetchGetPageData } from '@/services/strapi/fetch'
-import { StrapiConfig } from '@/services/strapi/config'
+import { StrapiPageConfig } from '@/services/strapi/config'
 
 import illustration from '@img/illustration/illustration-03.jpg'
 import illustrationDark from '@img/illustration/illustration-dark-03.jpg'
@@ -19,7 +19,7 @@ export default async function Curators({
   isDark
 }: CuratorsProps): Promise<JSX.Element> {
   const { title, people } = await fetchGetPageData<CuratorsSection>(
-    StrapiConfig.curators
+    StrapiPageConfig.curators
   )
 
   return (

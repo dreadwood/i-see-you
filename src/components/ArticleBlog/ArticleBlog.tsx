@@ -3,6 +3,11 @@ import Button from '@/UI/Button/Button'
 import Title from '@/UI/Title/Title'
 
 import styles from './ArticleBlog.module.scss'
+import { IArticleBlog } from '@/services/strapi/types'
+import {
+  getStrapiFileData,
+  getStrapiMultiFileData
+} from '@/services/strapi/utils'
 
 const socialLinks = [
   {
@@ -31,16 +36,8 @@ const socialLinks = [
   }
 ]
 
-type Article = {
-  title: string
-  fisrtPart: string
-  secondPart?: string
-  author?: string
-  date: string
-}
-
 interface ArticleBlogProps {
-  article: Article
+  article: IArticleBlog
 }
 
 export default function ArticleBlog({
@@ -49,31 +46,32 @@ export default function ArticleBlog({
   return (
     <section>
       <div className={styles.wrp}>
-        <Title text={article.title} as="h1" />
+        <Title text={article.articleTitle} as="h1" />
         <div
           className={styles.content}
           dangerouslySetInnerHTML={{
-            __html: article.fisrtPart.split('\n').join('<br>')
+            __html: article.firstText.split('\n').join('<br>')
           }}
         />
 
         <div className={styles.illustration}>
-          <picture>
-            <img src="https://loremflickr.com/1200/720" alt="" />
-          </picture>
-          <picture>
-            <img src="https://loremflickr.com/1280/720" alt="" />
-          </picture>
-          <picture>
-            <img src="https://loremflickr.com/1200/720" alt="" />
-          </picture>
+          {article.articleImages?.data &&
+            article.articleImages.data.map((it) => {
+              const filePhoto = getStrapiMultiFileData(it)
+
+              return (
+                <picture key={filePhoto.url}>
+                  <img src={filePhoto.url} alt="" />
+                </picture>
+              )
+            })}
         </div>
 
-        {article.secondPart && (
+        {article.secondText && (
           <div
             className={styles.content}
             dangerouslySetInnerHTML={{
-              __html: article.secondPart.split('\n').join('<br>')
+              __html: article.secondText.split('\n').join('<br>')
             }}
           />
         )}
@@ -89,8 +87,19 @@ export default function ArticleBlog({
         </div>
 
         <div className={styles.controls}>
-          <Button text="Назад" size="size2" iconLeft="btn-arrow-left" />
-          <Button text="Вернуться на главную" color="ghost" size="size2" />
+          <Button
+            as="backButton"
+            text="Назад"
+            size="size2"
+            iconLeft="btn-arrow-left"
+          />
+          <Button
+            as="link"
+            link="/"
+            text="Вернуться на главную"
+            color="ghost"
+            size="size2"
+          />
         </div>
       </div>
     </section>

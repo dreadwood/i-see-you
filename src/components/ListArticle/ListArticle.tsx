@@ -2,17 +2,22 @@ import Title from '@/UI/Title/Title'
 import Button from '@/UI/Button/Button'
 import styles from './ListArticle.module.scss'
 import ArticlePreview from '@/components/ArticlePreview/ArticlePreview'
-import { articles } from '@/mocks/articles'
+import { fetchGetBlogData } from '@/services/strapi/fetch'
+import { StrapiBlogConfig } from '@/services/strapi/config'
 
 interface ListArticleProps {
   title: string
+  config: (typeof StrapiBlogConfig)[keyof typeof StrapiBlogConfig]
   isBlogLink?: boolean
 }
 
 export default async function ListArticle({
   title,
+  config,
   isBlogLink
 }: ListArticleProps): Promise<JSX.Element> {
+  const articles = await fetchGetBlogData(config)
+
   return (
     <section className={styles.section}>
       <div className={styles.wrp}>
@@ -22,6 +27,8 @@ export default async function ListArticle({
             <Button
               className={styles.btn}
               text="Читать всё"
+              as="link"
+              link={'/blog'}
               color="ghost"
               size="size2"
               iconRight="btn-arrow-right"
@@ -29,15 +36,8 @@ export default async function ListArticle({
           )}
         </div>
         <div className={styles.content}>
-          {articles.slice(0, 3).map((it) => (
-            <ArticlePreview
-              title={it.title}
-              text={it.text}
-              author={it.author}
-              date={it.date}
-              count={it.count}
-              key={it.id}
-            />
+          {articles.map((it) => (
+            <ArticlePreview article={it} key={it.id} />
           ))}
         </div>
       </div>

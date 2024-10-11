@@ -5,37 +5,33 @@ import Title from '@/UI/Title/Title'
 import ScrollTopButton from '@/UI/ScrollTopButton/ScrollTopButton'
 import Button from '@/UI/Button/Button'
 import Pagination from '@/UI/Pagination/Pagination'
-import { articles } from '@/mocks/articles'
+import { fetchGetBlogData } from '@/services/strapi/fetch'
+import { StrapiBlogConfig } from '@/services/strapi/config'
 
 import styles from './page.module.scss'
 
-const title = 'Наш <span>блог</span>'
+export default async function BlogPage(): Promise<JSX.Element> {
+  const articles = await fetchGetBlogData(StrapiBlogConfig.blog)
 
-export default function Landing(): JSX.Element {
   return (
     <>
       <Header />
       <main className={styles.page}>
         <div className={styles.wrp}>
-          <Title text={title} as="h1" />
+          <Title text={'Наш <span>блог</span>'} as="h1" />
 
           <div className={styles.list}>
             {articles.map((it) => (
-              <ArticlePreview
-                title={it.title}
-                text={it.text}
-                author={it.author}
-                date={it.date}
-                count={it.count}
-                key={it.id}
-              />
+              <ArticlePreview article={it} key={it.id} />
             ))}
           </div>
 
-          <Pagination className={styles.pagination} />
+          {/* <Pagination className={styles.pagination} /> */}
           <div className={styles.controls}>
             <Button
               className={styles.btn}
+              as="link"
+              link="/"
               text="На главную"
               size="size2"
               iconLeft="btn-arrow-left"

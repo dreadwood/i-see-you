@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import Title from '@/UI/Title/Title'
 import { headerLinks } from '@/app/const'
 import Accordion from './partials/Accordion/Accordion'
-import { StrapiConfig } from '@/services/strapi/config'
+import { StrapiPageConfig } from '@/services/strapi/config'
 import { fetchGetPageData } from '@/services/strapi/fetch'
 import { ProgramListSection, ProgramSection } from '@/services/strapi/types'
 
@@ -15,9 +15,9 @@ interface ProgramProps {
 export default async function Program({
   isDark
 }: ProgramProps): Promise<JSX.Element> {
-  const programData = fetchGetPageData<ProgramSection>(StrapiConfig.program)
+  const programData = fetchGetPageData<ProgramSection>(StrapiPageConfig.program)
   const programListData = fetchGetPageData<ProgramListSection[]>(
-    StrapiConfig.programList
+    StrapiPageConfig.programList
   )
 
   const [program, programList] = await Promise.all([

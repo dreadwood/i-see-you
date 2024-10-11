@@ -2,31 +2,37 @@ export const headerLinks = [
   {
     id: 1,
     text: 'О курсе',
-    htmlId: 'aboutCourse'
+    htmlId: 'about_course',
+    href: '/#about_course'
   },
   {
     id: 2,
     text: 'Про автора',
-    htmlId: 'aboutAuthor'
+    htmlId: 'aboutAuthor',
+    href: '/#about_author'
   },
   {
     id: 3,
     text: 'Кураторы',
-    htmlId: 'curators'
+    htmlId: 'curators',
+    href: '/#curators'
   },
   {
     id: 4,
     text: 'Программа',
-    htmlId: 'program'
+    htmlId: 'program',
+    href: '/#program'
   },
   {
     id: 5,
     text: 'Блог',
-    htmlId: 'blog'
+    htmlId: 'blog',
+    href: '/blog'
   },
   {
     id: 6,
     text: 'Регистрация',
-    htmlId: 'registration'
+    htmlId: 'registration',
+    href: '/#registration'
   }
 ]

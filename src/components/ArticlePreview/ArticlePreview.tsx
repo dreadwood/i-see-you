@@ -1,44 +1,44 @@
 import Icon from '@/components/Icon/Icon'
 import styles from './ArticlePreview.module.scss'
+import { IArticleBlogWithId } from '@/services/strapi/types'
+import { getStrapiFileData } from '@/services/strapi/utils'
 
 interface ArticlePreviewProps {
-  title?: string
-  text?: string
-  img?: string
-  author?: string
-  date?: string
-  count?: number
+  article: IArticleBlogWithId
 }
 
 export default function ArticlePreview({
-  title = 'Тест текст текст',
-  text = 'Это текст-рыба, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной рыбой.',
-  img = 'https://loremflickr.com/1280/720',
-  author = 'John Doe',
-  date = '30 Сентября 2024',
-  count = 321
+  article
 }: ArticlePreviewProps): JSX.Element {
+  const filePhoto = getStrapiFileData(article.previewImage)
+
   return (
     <article className={styles.card}>
       <picture>
-        <img className={styles.img} src={img} alt="" />
+        <img className={styles.img} src={filePhoto.url} alt="" />
       </picture>
 
       <div className={styles.content}>
-        <h3 className={styles.title}>{title}</h3>
-        <p className={styles.text}>{text}</p>
+        <h3 className={styles.title}>{article.previewTitle}</h3>
+        <p className={styles.text}>{article.previewText}</p>
 
         <div className={styles.bottom}>
           <div className={styles.info}>
-            {author} • {date}
+            {article.author} • {article.date}
           </div>
-          <div className={styles.count}>
-            <Icon name="share" width={16} height={16} />
-            {count}
-          </div>
+          {article.socialCount && (
+            <div className={styles.count}>
+              <Icon name="share" width={16} height={16} />
+              {article.socialCount}
+            </div>
+          )}
         </div>
 
-        <a className={styles.link} href="#" aria-label={'Открыть статью'}></a>
+        <a
+          className={styles.link}
+          href={`/blog/${article.url}`}
+          aria-label={'Открыть статью'}
+        ></a>
       </div>
     </article>
   )

@@ -11,6 +11,7 @@ import Curators from '@/components/Curators/Curators'
 import Program from '@/components/Program/Program'
 import ScrollTopButton from '@/UI/ScrollTopButton/ScrollTopButton'
 import ListArticle from '@/components/ListArticle/ListArticle'
+import { StrapiBlogConfig } from '@/services/strapi/config'
 
 export default async function Landing(): Promise<JSX.Element> {
   return (
@@ -25,7 +26,11 @@ export default async function Landing(): Promise<JSX.Element> {
         <Program />
         <Feedback isDark />
         <AboutCourse />
-        <ListArticle title="Наш <span>блог</span>" isBlogLink />
+        <ListArticle
+          title="Наш <span>блог</span>"
+          config={StrapiBlogConfig.populate}
+          isBlogLink
+        />
         <Registration isDark />
       </main>
       <Footer isDark />

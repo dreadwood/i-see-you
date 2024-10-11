@@ -6,12 +6,12 @@ import Icon from '@/components/Icon/Icon'
 import SocialLinks from '@/components/SocialLink/SocialLink'
 import Overlay from '@/UI/Overlay/Overlay'
 import { headerLinks } from '@/app/const'
-import { Link } from '@/services/strapi/types'
+import { CommonLink } from '@/services/strapi/types'
 
 import styles from './ContentHeader.module.scss'
 
 interface ContentHeaderProps {
-  socialLinks: Link[]
+  socialLinks: CommonLink[]
 }
 
 export default function ContentHeader({ socialLinks }: ContentHeaderProps) {
@@ -42,7 +42,7 @@ export default function ContentHeader({ socialLinks }: ContentHeaderProps) {
               <li key={it.id}>
                 <a
                   className={styles.link}
-                  href={`#${it.htmlId}`}
+                  href={it.href}
                   onClick={() => setOpen(false)}
                 >
                   {it.text}
@@ -50,7 +50,6 @@ export default function ContentHeader({ socialLinks }: ContentHeaderProps) {
               </li>
             ))}
           </ul>
-          {/* <SocialHeader className={styles.offcanvasBottom} /> */}
           <div className={styles.offcanvasBottom}>
             <SocialLinks social={socialLinks} />
           </div>

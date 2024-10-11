@@ -1,4 +1,4 @@
-import { FileObj } from './types'
+import { FileObj, MultiFileObj } from './types'
 
 export function getStrapiURL(): string {
   return process.env.NEXT_PUBLIC_DEV_MODE === 'true' &&
@@ -7,15 +7,28 @@ export function getStrapiURL(): string {
     : ''
 }
 
-export function getStrapiFileData(fileObj: FileObj) {
+export function getStrapiFileData(obj: FileObj) {
   const path = getStrapiURL()
 
   return {
-    url: path + fileObj.data.attributes.url,
-    name: fileObj.data.attributes.name,
-    caption: fileObj.data.attributes.caption,
-    width: fileObj.data.attributes.width,
-    height: fileObj.data.attributes.height,
-    mime: fileObj.data.attributes.mime
+    url: path + obj.data.attributes.url,
+    name: obj.data.attributes.name,
+    caption: obj.data.attributes.caption,
+    width: obj.data.attributes.width,
+    height: obj.data.attributes.height,
+    mime: obj.data.attributes.mime
+  }
+}
+
+export function getStrapiMultiFileData(obj: MultiFileObj) {
+  const path = getStrapiURL()
+
+  return {
+    url: path + obj.attributes.url,
+    name: obj.attributes.name,
+    caption: obj.attributes.caption,
+    width: obj.attributes.width,
+    height: obj.attributes.height,
+    mime: obj.attributes.mime
   }
 }

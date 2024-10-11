@@ -4,7 +4,7 @@ import illustration from '@img/illustration/illustration-05.jpg'
 import illustrationDark from '@img/illustration/illustration-dark-05.jpg'
 import CardForm from './partials/CardForm/CardForm'
 import CardPrice from './partials/CardPrice/CardPrice'
-import { StrapiConfig } from '@/services/strapi/config'
+import { StrapiPageConfig } from '@/services/strapi/config'
 import { fetchGetPageData } from '@/services/strapi/fetch'
 import { RegistrationSection } from '@/services/strapi/types'
 
@@ -18,7 +18,7 @@ export default async function Registration({
   isDark
 }: RegistrationProps): Promise<JSX.Element> {
   const { cost, costText, ...formData } =
-    await fetchGetPageData<RegistrationSection>(StrapiConfig.registration)
+    await fetchGetPageData<RegistrationSection>(StrapiPageConfig.registration)
 
   return (
     <section className={styles.section} id={headerLinks[5].htmlId}>

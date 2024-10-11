@@ -23,6 +23,21 @@ export type FileObj = {
   }
 }
 
+export type MultiFileObj = {
+  attributes: FileMediaStrapi
+}
+
+export type Pagination = {
+  page: number
+  pageSize: number
+  pageCount: number
+  total: number
+}
+
+export type Meta = {
+  pagination: Pagination
+}
+
 export type BorderListItem = {
   id: number
   icon: string
@@ -63,7 +78,7 @@ export type Field = {
   isExist: boolean
 }
 
-export type Link = {
+export type CommonLink = {
   id: number
   label: string
   url: string
@@ -114,7 +129,7 @@ export type AboutAuthorSection = {
   quote: string
   authorQuote: string
   list: TextList[]
-  socialLinks: Link[]
+  socialLinks: CommonLink[]
   photo: FileObj
 }
 
@@ -166,9 +181,9 @@ export type FooterSection = {
   id: number
   text: string
   copyrightDate: string
-  socialLinks: Link[]
-  contactLinks: Link[]
-  textLinks: Link[]
+  socialLinks: CommonLink[]
+  contactLinks: CommonLink[]
+  textLinks: CommonLink[]
 }
 
 export type ClientData = {
@@ -176,4 +191,34 @@ export type ClientData = {
   email?: string
   tel?: string
   telegram?: string
+}
+
+export type IArticleBlog = {
+  previewTitle: string
+  previewText: string
+  previewImage: FileObj
+  articleTitle: string
+  firstText: string
+  articleImages?: {
+    data: MultiFileObj[]
+    meta: Meta
+  }
+  secondText?: string
+  author?: string
+  date: string
+  socialCount?: string
+  isMainPage: boolean
+  url: string
+}
+
+export type IArticleBlogWithId = IArticleBlog & { id: number }
+
+export type ArticleRes = {
+  id: number
+  attributes: IArticleBlog
+}
+
+export type ArticleListRes = {
+  data: ArticleRes[]
+  meta: Meta
 }

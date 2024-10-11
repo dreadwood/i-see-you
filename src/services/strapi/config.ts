@@ -1,4 +1,4 @@
-export const StrapiConfig = {
+export const StrapiPageConfig = {
   hero: {
     params: 'populate[heroSection][populate]=*',
     name: 'heroSection'
@@ -44,3 +44,18 @@ export const StrapiConfig = {
     name: 'footerSection'
   }
 }
+
+export const StrapiBlogConfig = {
+  populate: {
+    params: 'populate=*&filters[isMainPage][$eq]=true&pagination[limit]=3',
+    name: ''
+  },
+  last: {
+    params: 'populate=*&pagination[limit]=3&sort[0]=id:desc',
+    name: ''
+  },
+  blog: {
+    params: 'populate=*',
+    name: ''
+  }
+} as const

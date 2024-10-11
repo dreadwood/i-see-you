@@ -6,7 +6,8 @@ import illustration from '@img/illustration/illustration-01.jpg'
 import illustrationDark from '@img/illustration/illustration-dark-01.jpg'
 import { fetchGetPageData } from '@/services/strapi/fetch'
 import { HeroSection } from '@/services/strapi/types'
-import { StrapiConfig } from '@/services/strapi/config'
+import { StrapiPageConfig } from '@/services/strapi/config'
+import { headerLinks } from '@/app/const'
 
 import styles from './Hero.module.scss'
 
@@ -25,7 +26,7 @@ export default async function Hero({
   isDark
 }: HeroProps): Promise<JSX.Element> {
   const { title, text, buttonText, list } = await fetchGetPageData<HeroSection>(
-    StrapiConfig.hero
+    StrapiPageConfig.hero
   )
 
   return (
@@ -51,7 +52,12 @@ export default async function Hero({
             className={styles.text}
             dangerouslySetInnerHTML={{ __html: text.split('\n').join('<br>') }}
           />
-          <Button className={styles.btn} text={buttonText} />
+          <Button
+            className={styles.btn}
+            as="link"
+            link={headerLinks[5].href}
+            text={buttonText}
+          />
         </div>
 
         <ul className={clsx(styles.listCard, isDark && styles.dark)}>

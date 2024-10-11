@@ -2,7 +2,7 @@ import Icon from '@/components/Icon/Icon'
 import Title from '@/UI/Title/Title'
 
 import styles from './AboutCourse.module.scss'
-import { StrapiConfig } from '@/services/strapi/config'
+import { StrapiPageConfig } from '@/services/strapi/config'
 import { fetchGetPageData } from '@/services/strapi/fetch'
 import { AboutCourseSection } from '@/services/strapi/types'
 
@@ -17,7 +17,7 @@ const content = [
 
 export default async function AboutCourse(): Promise<JSX.Element> {
   const { title, list } = await fetchGetPageData<AboutCourseSection>(
-    StrapiConfig.aboutCourse
+    StrapiPageConfig.aboutCourse
   )
 
   return (

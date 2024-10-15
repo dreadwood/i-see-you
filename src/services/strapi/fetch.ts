@@ -73,18 +73,15 @@ export async function fetchGetArticleData(
 }
 
 export async function fetchIncrimentCountArticle(id: number, count: number) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs/${id}`,
-    {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        data: {
-          socialCount: count
-        }
-      })
-    }
-  )
+  const response = await fetch(`/api/blogs/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      data: {
+        socialCount: count
+      }
+    })
+  })
 
   console.log(response.status, response.ok)
 

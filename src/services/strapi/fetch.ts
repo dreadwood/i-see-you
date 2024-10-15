@@ -54,7 +54,7 @@ export async function fetchGetBlogData(
 
 export async function fetchGetArticleData(
   url: string
-): Promise<IArticleBlog | null> {
+): Promise<IArticleBlogWithId | null> {
   const searchParams = `filters[url][$eq]=${url}&populate=*`
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs?${searchParams}`,
@@ -69,5 +69,26 @@ export async function fetchGetArticleData(
     return null
   }
 
-  return data.data[0].attributes
+  return { id: data.data[0].id, ...data.data[0].attributes }
+}
+
+export async function fetchIncrimentCountArticle(id: number, count: number) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs/${id}`,
+    {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        data: {
+          socialCount: count
+        }
+      })
+    }
+  )
+
+  console.log(response.status, response.ok)
+
+  const data = await response.json()
+
+  console.log(data)
 }

@@ -1,7 +1,7 @@
 import SocialLinks from '@/components/SocialLink/SocialLink'
 import Button from '@/UI/Button/Button'
 import Title from '@/UI/Title/Title'
-import { IArticleBlog } from '@/services/strapi/types'
+import { IArticleBlogWithId } from '@/services/strapi/types'
 import {
   getStrapiFileData,
   getStrapiMultiFileData
@@ -9,36 +9,10 @@ import {
 import Video from '@/components/Video/Video'
 
 import styles from './ArticleBlog.module.scss'
-
-const socialLinks = [
-  {
-    id: 1,
-    label: 'поделиться в ',
-    url: '#',
-    icon: 'telegram'
-  },
-  {
-    id: 2,
-    label: 'поделиться в ',
-    url: '#',
-    icon: 'instagram'
-  },
-  {
-    id: 3,
-    label: 'поделиться в ',
-    url: '#',
-    icon: 'facebook'
-  },
-  {
-    id: 4,
-    label: 'поделиться в ',
-    url: '#',
-    icon: 'vk'
-  }
-]
+import ShareLinks from '../ShareLinks/ShareLinks'
 
 interface ArticleBlogProps {
-  article: IArticleBlog
+  article: IArticleBlogWithId
 }
 
 export default function ArticleBlog({
@@ -46,6 +20,27 @@ export default function ArticleBlog({
 }: ArticleBlogProps): JSX.Element {
   const filePosterVideo = getStrapiFileData(article.articlePosterVideo)
   const fileVideo = getStrapiFileData(article.articleVideo)
+
+  const socialLinks = [
+    {
+      id: 1,
+      label: 'поделиться в Telegram',
+      url: `https://t.me/share/url?url=http://iseeyou.courses/blog/${article.url}`,
+      icon: 'telegram'
+    },
+    {
+      id: 2,
+      label: 'поделиться в Facebook',
+      url: `https://www.facebook.com/sharer.php?u=https%3A%2F%2Fiseeyou.courses%2Fblog%2F${article.url}`,
+      icon: 'facebook'
+    },
+    {
+      id: 3,
+      label: 'поделиться во Вконтакте ',
+      url: `https://vk.com/share.php?url=httpы://iseeyou.courses/blog/${article.url}`,
+      icon: 'vk'
+    }
+  ]
 
   const styleVideo = article.articleVideoWidth
     ? ({
@@ -108,7 +103,8 @@ export default function ArticleBlog({
 
         <div className={styles.social}>
           <h3 className={styles.socialTitle}>Поделиться</h3>
-          <SocialLinks social={socialLinks} style="gray" />
+          <ShareLinks article={article} />
+          {/* <SocialLinks social={socialLinks} style="gray" /> */}
         </div>
 
         <div className={styles.controls}>

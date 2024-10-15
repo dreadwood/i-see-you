@@ -210,7 +210,7 @@ export type IArticleBlog = {
   thirdText?: string
   author?: string
   date: string
-  socialCount?: string
+  socialCount?: number
   isMainPage: boolean
   url: string
 }

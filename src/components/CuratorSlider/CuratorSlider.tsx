@@ -64,11 +64,13 @@ export default function CuratorSlider({
 
             return (
               <div className="swiper-slide" key={it.id}>
-                <Slide
-                  img={filePhoto.url}
-                  text={it.label}
-                  videoUrl={fileVideo.url}
-                />
+                {filePhoto && fileVideo && (
+                  <Slide
+                    img={filePhoto.url}
+                    text={it.label}
+                    videoUrl={fileVideo.url}
+                  />
+                )}
               </div>
             )
           })}

@@ -31,7 +31,12 @@ export default async function CourseDescription(): Promise<JSX.Element> {
             <p className={styles.accent}>{highlightedText}</p>
           </div>
           <div className={styles.video}>
-            <Video posterUrl={filePosterVideo.url} videoUrl={fileVideo.url} />
+            {fileVideo && (
+              <Video
+                posterUrl={filePosterVideo?.url}
+                videoUrl={fileVideo.url}
+              />
+            )}
           </div>
         </div>
       </div>

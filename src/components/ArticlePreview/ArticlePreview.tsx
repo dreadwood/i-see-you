@@ -14,9 +14,11 @@ export default function ArticlePreview({
 
   return (
     <article className={styles.card}>
-      <picture>
-        <img className={styles.img} src={filePhoto.url} alt="" />
-      </picture>
+      {filePhoto && (
+        <picture>
+          <img className={styles.img} src={filePhoto.url} alt="" />
+        </picture>
+      )}
 
       <div className={styles.content}>
         <h3 className={styles.title}>{article.previewTitle}</h3>

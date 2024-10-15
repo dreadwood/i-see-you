@@ -1,13 +1,14 @@
 import SocialLinks from '@/components/SocialLink/SocialLink'
 import Button from '@/UI/Button/Button'
 import Title from '@/UI/Title/Title'
-
-import styles from './ArticleBlog.module.scss'
 import { IArticleBlog } from '@/services/strapi/types'
 import {
   getStrapiFileData,
   getStrapiMultiFileData
 } from '@/services/strapi/utils'
+import Video from '@/components/Video/Video'
+
+import styles from './ArticleBlog.module.scss'
 
 const socialLinks = [
   {
@@ -43,6 +44,15 @@ interface ArticleBlogProps {
 export default function ArticleBlog({
   article
 }: ArticleBlogProps): JSX.Element {
+  const filePosterVideo = getStrapiFileData(article.articlePosterVideo)
+  const fileVideo = getStrapiFileData(article.articleVideo)
+
+  const styleVideo = article.articleVideoWidth
+    ? ({
+        '--video-width': `${article.articleVideoWidth}%`
+      } as React.CSSProperties)
+    : {}
+
   return (
     <section>
       <div className={styles.wrp}>
@@ -53,6 +63,21 @@ export default function ArticleBlog({
             __html: article.firstText.split('\n').join('<br>')
           }}
         />
+
+        {fileVideo && (
+          <div className={styles.video} style={styleVideo}>
+            <Video posterUrl={filePosterVideo?.url} videoUrl={fileVideo.url} />
+          </div>
+        )}
+
+        {article.secondText && (
+          <div
+            className={styles.content}
+            dangerouslySetInnerHTML={{
+              __html: article.secondText.split('\n').join('<br>')
+            }}
+          />
+        )}
 
         <div className={styles.illustration}>
           {article.articleImages?.data &&
@@ -67,11 +92,11 @@ export default function ArticleBlog({
             })}
         </div>
 
-        {article.secondText && (
+        {article.thirdText && (
           <div
             className={styles.content}
             dangerouslySetInnerHTML={{
-              __html: article.secondText.split('\n').join('<br>')
+              __html: article.thirdText.split('\n').join('<br>')
             }}
           />
         )}

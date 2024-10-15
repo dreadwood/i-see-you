@@ -20,7 +20,7 @@ export type FileMediaStrapi = {
 export type FileObj = {
   data: {
     attributes: FileMediaStrapi
-  }
+  } | null
 }
 
 export type MultiFileObj = {
@@ -199,11 +199,15 @@ export type IArticleBlog = {
   previewImage: FileObj
   articleTitle: string
   firstText: string
+  articlePosterVideo: FileObj
+  articleVideo: FileObj
+  articleVideoWidth: number | null
+  secondText?: string
   articleImages?: {
     data: MultiFileObj[]
     meta: Meta
   }
-  secondText?: string
+  thirdText?: string
   author?: string
   date: string
   socialCount?: string

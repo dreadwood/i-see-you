@@ -13,6 +13,20 @@
     line-height: 32px;
   }
 }
+.video {
+  position: relative;
+  width: var(--video-width, 66%);
+  height: auto;
+  margin-top: 24px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  @include var.breakpoint-md {
+    width: 100%;
+  }
+}
 .illustration {
   display: flex;
   justify-content: center;

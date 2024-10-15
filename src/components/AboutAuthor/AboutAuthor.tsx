@@ -36,11 +36,13 @@ export default async function AboutAuthor(): Promise<JSX.Element> {
 
             <SocialLinks social={socialLinks} style="gray" />
           </div>
-          <div className={styles.photo}>
-            <picture>
-              <img src={filePhoto.url} alt="" />
-            </picture>
-          </div>
+          {filePhoto && (
+            <div className={styles.photo}>
+              <picture>
+                <img src={filePhoto.url} alt="" />
+              </picture>
+            </div>
+          )}
         </div>
       </div>
     </section>

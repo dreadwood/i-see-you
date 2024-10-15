@@ -58,11 +58,13 @@ export default function FeedbackSlider({
 
               return (
                 <div className="swiper-slide" key={it.id}>
-                  <Slide
-                    img={filePhoto.url}
-                    description={it.label}
-                    videoUrl={fileVideo.url}
-                  />
+                  {filePhoto && fileVideo && (
+                    <Slide
+                      img={filePhoto.url}
+                      description={it.label}
+                      videoUrl={fileVideo.url}
+                    />
+                  )}
                 </div>
               )
             })}

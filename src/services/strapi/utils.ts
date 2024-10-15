@@ -8,6 +8,10 @@ export function getStrapiURL(): string {
 }
 
 export function getStrapiFileData(obj: FileObj) {
+  if (!obj.data) {
+    return
+  }
+
   const path = getStrapiURL()
 
   return {

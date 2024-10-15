@@ -26,7 +26,7 @@ const plyrOptions = {
 
 interface VideoProps {
   videoUrl: string
-  posterUrl: string
+  posterUrl?: string
   className?: string
 }
 

@@ -68,6 +68,7 @@ export type WaveList = {
 export type ProgramList = {
   id: number
   item: string
+  description?: string
 }
 
 export type Field = {

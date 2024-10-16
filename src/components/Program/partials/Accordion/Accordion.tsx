@@ -22,7 +22,10 @@ export default function Accordion({
 
   return (
     <div className={clsx(styles.accordion, className)}>
-      <button className={styles.btn} onClick={() => setOpen(!isOpen)}>
+      <button
+        className={clsx(styles.btn, isOpen && styles.open)}
+        onClick={() => setOpen(!isOpen)}
+      >
         {data.name}
         <Icon
           className={clsx(styles.icon, isOpen && styles.open)}
@@ -37,7 +40,12 @@ export default function Accordion({
         ref={refList}
       >
         {data.list.map((it) => (
-          <li dangerouslySetInnerHTML={{ __html: it.item }} key={it.id} />
+          <li key={it.id}>
+            <div dangerouslySetInnerHTML={{ __html: it.item }} />
+            {it.description && (
+              <div className={styles.description}>{it.description}</div>
+            )}
+          </li>
         ))}
       </ul>
     </div>
